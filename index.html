@@ -43,10 +43,10 @@
   <div id="scroll-progress" class="scroll-progress" aria-hidden="true"></div>
 
   <!-- FLOATING PILL NAVBAR -->
-  <div class="sticky top-0 z-40 px-4 pt-3 pb-2 pointer-events-none">
-    <header class="nav-enter pointer-events-auto max-w-[1080px] mx-auto bg-surface/85 backdrop-blur-xl hairline-strong rounded-full px-3 sm:px-4 h-14 flex items-center justify-between gap-4 shadow-[0_12px_40px_rgba(0,0,0,0.55)]">
+  <div class="sticky top-0 z-40 px-3 sm:px-4 pt-3 pb-2 pointer-events-none">
+    <header class="nav-enter pointer-events-auto max-w-[1080px] mx-auto bg-surface/88 backdrop-blur-xl hairline-strong rounded-full px-3 sm:px-4 h-14 flex items-center justify-between gap-2 sm:gap-4 shadow-[0_12px_40px_rgba(0,0,0,0.55)]">
       <!-- Brand -->
-      <a href="#top" class="flex items-center gap-2.5 pl-2 shrink-0">
+      <a href="#top" class="flex items-center gap-2 pl-1.5 sm:pl-2 shrink-0">
         <svg width="20" height="15" viewBox="0 0 221 167" fill="none" xmlns="http://www.w3.org/2000/svg" class="shrink-0">
           <path d="M0 0L110.109 166.858L127.539 141.473L32.7384 0C32.7384 0 0 0.242599 0 0Z" fill="#F2CE16"/>
           <path d="M110.109 101.493L127.545 76.2321L76.2324 0H43.2451L110.109 101.493Z" fill="#F2CE16"/>
@@ -54,10 +54,10 @@
           <path d="M187.654 0L115.571 108.977L131.477 133.162L220.15 0H187.654Z" fill="#F2CE16"/>
           <path d="M109.937 21.7641C116.101 21.7641 121.098 16.8921 121.098 10.8821C121.098 4.87207 116.101 0 109.937 0C103.773 0 98.7759 4.87207 98.7759 10.8821C98.7759 16.8921 103.773 21.7641 109.937 21.7641Z" fill="#F2CE16"/>
         </svg>
-        <span class="text-[14px] font-bold tracking-tight text-ink">Vantage Capital</span>
+        <span class="text-[13px] sm:text-[14px] font-bold tracking-tight text-ink whitespace-nowrap">Vantage Capital</span>
       </a>
 
-      <!-- Center Nav Links -->
+      <!-- Center Nav Links (Desktop) -->
       <nav class="hidden md:flex items-center gap-6 text-[13px] font-medium text-muted" aria-label="Secciones">
         <a href="#sobre" class="hover:text-ink transition-colors">Nosotros</a>
         <a href="#plataforma" class="hover:text-ink transition-colors">Plataforma</a>
@@ -68,44 +68,68 @@
       </nav>
 
       <!-- Right Pill Actions -->
-      <div class="flex items-center gap-2 shrink-0">
+      <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
         <button id="nav-demo-btn" class="hidden sm:inline-flex tactile items-center gap-1.5 px-3.5 py-2 rounded-full bg-obsidian/70 hairline hover:border-white/25 text-[12px] font-bold text-ink">
           <i data-lucide="play" class="w-3 h-3 text-vantage fill-vantage"></i>
           <span>Demo</span>
         </button>
-        <button id="nav-access-btn" class="tactile px-4 py-2 rounded-full bg-vantage text-obsidian text-[12px] font-bold hover:bg-[#f7d83b]">
+        <button id="nav-access-btn" class="tactile px-3.5 sm:px-4 py-2 rounded-full bg-vantage text-obsidian text-[12px] font-bold hover:bg-[#f7d83b] whitespace-nowrap">
           Abrir cuenta
+        </button>
+        <button id="mobile-menu-btn" type="button" aria-label="Abrir menú" aria-expanded="false" class="md:hidden tactile w-9 h-9 rounded-full bg-obsidian/80 hairline flex items-center justify-center text-ink">
+          <i id="mobile-menu-icon" data-lucide="menu" class="w-4 h-4"></i>
         </button>
       </div>
     </header>
+
+    <!-- Mobile Dropdown Navigation Sheet -->
+    <div id="mobile-nav-drawer" class="md:hidden pointer-events-auto hidden max-w-[1080px] mx-auto mt-2 bg-surface/95 backdrop-blur-2xl hairline-strong rounded-2xl p-4 shadow-2xl">
+      <nav class="grid grid-cols-2 gap-1.5 text-[14px] font-medium text-ink" aria-label="Navegación móvil">
+        <a href="#sobre" class="mobile-nav-link px-3.5 py-2.5 rounded-xl hover:bg-elevated transition-colors">Nosotros</a>
+        <a href="#plataforma" class="mobile-nav-link px-3.5 py-2.5 rounded-xl hover:bg-elevated transition-colors">Plataforma</a>
+        <a href="#integraciones" class="mobile-nav-link px-3.5 py-2.5 rounded-xl hover:bg-elevated transition-colors">Integraciones</a>
+        <a href="#planes" class="mobile-nav-link px-3.5 py-2.5 rounded-xl hover:bg-elevated transition-colors">Planes</a>
+        <a href="#blog" class="mobile-nav-link px-3.5 py-2.5 rounded-xl hover:bg-elevated transition-colors">Blog</a>
+        <a href="#faq" class="mobile-nav-link px-3.5 py-2.5 rounded-xl hover:bg-elevated transition-colors">FAQ</a>
+      </nav>
+      <div class="pt-3 mt-3 border-t border-white/[0.08] flex gap-2">
+        <button id="mobile-drawer-demo-btn" class="tactile flex-1 py-2.5 rounded-xl bg-obsidian hairline text-[13px] font-bold text-ink flex items-center justify-center gap-1.5">
+          <i data-lucide="play" class="w-3.5 h-3.5 text-vantage fill-vantage"></i>
+          <span>Ver demo</span>
+        </button>
+        <button id="mobile-drawer-access-btn" class="tactile flex-1 py-2.5 rounded-xl bg-vantage text-obsidian text-[13px] font-bold">
+          Abrir cuenta
+        </button>
+      </div>
+    </div>
   </div>
 
   <!-- HERO: CENTERPIECE ARCHITECTURE -->
-  <section id="top" class="hero-ambience relative overflow-hidden pt-10 pb-16 lg:pt-14 lg:pb-24 border-b border-white/[0.06]">
-    <div class="max-w-[1200px] mx-auto px-5 lg:px-8 flex flex-col items-center gap-10 lg:gap-12">
+  <section id="top" class="hero-ambience relative overflow-hidden pt-8 pb-14 sm:pt-12 sm:pb-16 lg:pt-14 lg:pb-24 border-b border-white/[0.06]">
+    <div class="max-w-[1200px] mx-auto px-4 sm:px-5 lg:px-8 flex flex-col items-center gap-8 sm:gap-10 lg:gap-12">
 
       <!-- Centered Monumental Headline -->
-      <div class="flex flex-col items-center text-center gap-5 max-w-3xl">
-        <div class="hero-enter inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-surface/90 hairline text-[12px] font-medium text-muted">
-          <span class="w-1.5 h-1.5 rounded-full bg-vantage animate-pulse"></span>
-          <span>Banca privada y tesorería multi-divisa · iOS, Android &amp; Web</span>
+      <div class="flex flex-col items-center text-center gap-4 sm:gap-5 max-w-3xl">
+        <div class="hero-enter inline-flex items-center gap-2 px-3 sm:px-3.5 py-1.5 rounded-full bg-surface/90 hairline text-[11px] sm:text-[12px] font-medium text-muted">
+          <span class="w-1.5 h-1.5 rounded-full bg-vantage animate-pulse shrink-0"></span>
+          <span>Banca privada y tesorería · iOS, Android &amp; Web</span>
         </div>
 
-        <h1 class="hero-headline text-[44px] sm:text-[64px] lg:text-[78px] font-bold tracking-[-0.04em] leading-[0.98] text-ink">
+        <h1 class="hero-headline text-[38px] sm:text-[62px] lg:text-[78px] font-bold tracking-[-0.04em] leading-[1.02] sm:leading-[0.98] text-ink">
           Global access.<br />
           <span class="text-vantage">Local intelligence.</span>
         </h1>
 
-        <p class="hero-enter text-[16px] sm:text-[18px] text-muted leading-relaxed max-w-xl">
+        <p class="hero-enter text-[15px] sm:text-[18px] text-muted leading-relaxed max-w-xl px-1">
           Liquidez multi-divisa, rendimientos del Tesoro y transferencias institucionales sin spreads ocultos en una sola aplicación.
         </p>
 
-        <div class="hero-enter flex flex-wrap items-center justify-center gap-3 pt-1">
-          <button id="hero-access-btn" class="tactile px-6 py-3.5 rounded-full bg-vantage text-obsidian text-[14px] font-bold hover:bg-[#f7d83b] flex items-center gap-2 shadow-[0_0_28px_-6px_rgba(242,206,22,0.55)]">
+        <div class="hero-enter w-full sm:w-auto flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 pt-1">
+          <button id="hero-access-btn" class="tactile w-full sm:w-auto justify-center px-6 py-3.5 rounded-full bg-vantage text-obsidian text-[14px] font-bold hover:bg-[#f7d83b] flex items-center gap-2 shadow-[0_0_28px_-6px_rgba(242,206,22,0.55)]">
             <span>Solicitar acceso privado</span>
             <i data-lucide="arrow-right" class="w-4 h-4 stroke-[2.25]"></i>
           </button>
-          <button id="hero-demo-btn" class="tactile px-6 py-3.5 rounded-full bg-surface hairline hover:border-vantage/45 text-ink text-[14px] font-bold flex items-center gap-2">
+          <button id="hero-demo-btn" class="tactile w-full sm:w-auto justify-center px-6 py-3.5 rounded-full bg-surface hairline hover:border-vantage/45 text-ink text-[14px] font-bold flex items-center gap-2">
             <i data-lucide="play" class="w-3.5 h-3.5 text-vantage fill-vantage"></i>
             <span>Ver demo interactiva</span>
           </button>
@@ -113,30 +137,30 @@
       </div>
 
       <!-- 3-Column Hero Stage -->
-      <div class="w-full grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+      <div class="w-full grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6 items-center">
 
         <!-- Left Floating Panels -->
         <div class="hero-enter-left lg:col-span-4 flex flex-col gap-4 order-2 lg:order-1">
-          <div class="float-card bg-surface/90 backdrop-blur-md hairline-strong rounded-2xl p-5 flex flex-col gap-4 shadow-2xl">
-            <div class="flex items-center justify-between">
-              <div class="flex items-center gap-2">
-                <span class="px-2 py-0.5 rounded-md bg-elevated hairline text-[11px] font-bold text-ink">USD</span>
-                <span class="text-[12px] text-muted">Treasury ••8841</span>
+          <div class="float-card bg-surface/90 backdrop-blur-md hairline-strong rounded-2xl p-4 sm:p-5 flex flex-col gap-4 shadow-2xl">
+            <div class="flex items-center justify-between gap-2">
+              <div class="flex items-center gap-2 min-w-0">
+                <span class="px-2 py-0.5 rounded-md bg-elevated hairline text-[11px] font-bold text-ink shrink-0">USD</span>
+                <span class="text-[12px] text-muted truncate">Treasury ••8841</span>
               </div>
-              <span class="text-[11px] font-bold text-gain bg-gain/10 px-2 py-0.5 rounded-md tabular-nums">4.85% APY</span>
+              <span class="text-[11px] font-bold text-gain bg-gain/10 px-2 py-0.5 rounded-md tabular-nums shrink-0">4.85% APY</span>
             </div>
             <div class="flex flex-col gap-0.5 tabular-nums">
-              <span class="text-[28px] font-bold text-ink tracking-tight leading-none">$324,500.00</span>
+              <span class="text-[26px] sm:text-[28px] font-bold text-ink tracking-tight leading-none">$324,500.00</span>
               <span class="text-[12px] text-muted">Liquidez inmediata T+1</span>
             </div>
             <div class="grid grid-cols-2 gap-2 pt-2 border-t border-white/[0.06]">
-              <button id="float-deposit-btn" class="tactile py-2 rounded-xl bg-vantage text-obsidian text-[12px] font-bold text-center">Depositar</button>
-              <button id="float-send-btn" class="tactile py-2 rounded-xl bg-elevated hairline hover:border-white/20 text-ink text-[12px] font-bold text-center">Transferir</button>
+              <button id="float-deposit-btn" class="tactile py-2.5 rounded-xl bg-vantage text-obsidian text-[12px] font-bold text-center">Depositar</button>
+              <button id="float-send-btn" class="tactile py-2.5 rounded-xl bg-elevated hairline hover:border-white/20 text-ink text-[12px] font-bold text-center">Transferir</button>
             </div>
           </div>
 
           <!-- Social Proof Mini Card -->
-          <div class="bg-surface/80 hairline rounded-2xl p-4 flex items-center justify-between gap-4">
+          <div class="bg-surface/80 hairline rounded-2xl p-4 flex items-center justify-between gap-3">
             <div class="flex items-center -space-x-2.5">
               <div class="w-9 h-9 rounded-full bg-[#24242B] border-2 border-surface flex items-center justify-center text-[11px] font-bold text-ink">AM</div>
               <div class="w-9 h-9 rounded-full bg-[#2E2A1A] border-2 border-surface flex items-center justify-center text-[11px] font-bold text-vantage">SR</div>
@@ -155,7 +179,7 @@
 
         <!-- CENTERPIECE: Hand-Held Vantage Mobile Mockup -->
         <div class="lg:col-span-4 flex justify-center items-end order-1 lg:order-2 relative">
-          <div id="hero-phone-parallax" class="hero-enter-phone relative w-full max-w-[360px] flex justify-center">
+          <div id="hero-phone-parallax" class="hero-enter-phone relative w-full max-w-[270px] sm:max-w-[330px] lg:max-w-[360px] flex justify-center">
             <img
               src="./assets/hero-phone.png"
               alt="Vantage Capital Mobile App Mockup"
@@ -378,32 +402,32 @@
   <!-- ========================================================================= -->
   <!-- SECTION 2 (SCREENSHOT 2): EDITORIAL ABOUT BENTO + MONUMENTAL STATS        -->
   <!-- ========================================================================= -->
-  <section id="sobre" class="max-w-[1200px] mx-auto px-5 lg:px-8 py-24 lg:py-32 border-b border-white/[0.06]">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-start">
+  <section id="sobre" class="max-w-[1200px] mx-auto px-4 sm:px-5 lg:px-8 py-16 sm:py-24 lg:py-32 border-b border-white/[0.06]">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-10 items-start">
 
       <!-- Left Editorial Column -->
-      <div class="lg:col-span-5 flex flex-col justify-between gap-10">
-        <div class="flex flex-col gap-5">
+      <div class="lg:col-span-5 flex flex-col justify-between gap-8 sm:gap-10">
+        <div class="flex flex-col gap-4 sm:gap-5">
           <div class="about-fade flex items-center gap-2.5">
             <span class="eyebrow-dot"></span>
             <span class="text-[12px] font-bold uppercase tracking-[0.16em] text-muted">Nosotros</span>
           </div>
 
-          <h2 class="split-heading text-[38px] sm:text-[50px] lg:text-[52px] font-bold tracking-[-0.04em] leading-[1.04] text-ink">
+          <h2 class="split-heading text-[32px] sm:text-[48px] lg:text-[52px] font-bold tracking-[-0.04em] leading-[1.06] sm:leading-[1.04] text-ink">
             Creemos Que La Banca Debe Ser Sin Fricción
           </h2>
         </div>
 
         <!-- Vertical Hairline + ESTD Badge Block -->
-        <div class="about-fade border-l border-white/15 pl-6 flex flex-col gap-5 my-2">
+        <div class="about-fade border-l border-white/15 pl-5 sm:pl-6 flex flex-col gap-4 sm:gap-5 my-1">
           <div class="flex items-center gap-3.5">
-            <span class="bg-ink text-obsidian font-black text-[28px] sm:text-[32px] tracking-[-0.04em] px-3 py-1 leading-none rounded-[4px] tabular-nums">
+            <span class="bg-ink text-obsidian font-black text-[26px] sm:text-[32px] tracking-[-0.04em] px-3 py-1 leading-none rounded-[4px] tabular-nums">
               2018
             </span>
             <span class="text-[13px] font-bold uppercase tracking-[0.2em] text-muted">ESTD.</span>
           </div>
 
-          <p class="text-[15px] text-muted leading-relaxed max-w-sm">
+          <p class="text-[14px] sm:text-[15px] text-muted leading-relaxed max-w-sm">
             Acercamos infraestructura de tesorería institucional, cuentas multi-divisa y liquidaciones instantáneas a patrimonios globales y empresas de alto crecimiento sin burocracia bancaria.
           </p>
         </div>
@@ -416,9 +440,9 @@
       </div>
 
       <!-- Right Bento Visuals + Animated Counters Column -->
-      <div class="lg:col-span-7 flex flex-col gap-6">
-        <!-- Top Row: Editorial Photo 1 + $4.2B+ Counter -->
-        <div class="grid grid-cols-1 sm:grid-cols-12 gap-6 items-center">
+      <div class="lg:col-span-7 flex flex-col gap-5 sm:gap-6">
+        <!-- Top Row: Editorial Photo 1 + $5B+ Counter -->
+        <div class="grid grid-cols-1 sm:grid-cols-12 gap-5 sm:gap-6 items-center">
           <div class="sm:col-span-7 about-img-card img-reveal-wrap hairline aspect-[16/9.5] bg-surface">
             <img
               src="./assets/about-card-1.jpg"
@@ -427,21 +451,21 @@
             />
           </div>
 
-          <div class="sm:col-span-5 flex flex-col gap-1.5 sm:pl-4 tabular-nums about-stat-block">
+          <div class="sm:col-span-5 flex flex-col gap-1 sm:pl-4 tabular-nums about-stat-block">
             <span
               data-count-to="5"
               data-prefix="$"
               data-suffix="B"
               data-plus="true"
               data-decimals="0"
-              class="count-metric text-[52px] sm:text-[62px] font-bold tracking-[-0.045em] text-ink leading-none"
+              class="count-metric text-[44px] sm:text-[62px] font-bold tracking-[-0.045em] text-ink leading-none"
             >$5B<span class="text-vantage">+</span></span>
-            <span class="text-[14px] font-medium text-muted">Transacciones globales</span>
+            <span class="text-[13px] sm:text-[14px] font-medium text-muted">Transacciones globales</span>
           </div>
         </div>
 
         <!-- Middle Wide Editorial Photo 2 -->
-        <div class="about-img-card img-reveal-wrap hairline aspect-[16/8.6] bg-surface">
+        <div class="about-img-card img-reveal-wrap hairline aspect-[16/9] sm:aspect-[16/8.6] bg-surface">
           <img
             src="./assets/about-card-2.jpg"
             alt="Pago contactless con smartphone y tarjeta metálica Vantage"
@@ -450,29 +474,29 @@
         </div>
 
         <!-- Bottom Row: 120+ Countries & 75+ Currencies -->
-        <div class="grid grid-cols-2 gap-6 pt-2 tabular-nums">
-          <div class="flex flex-col gap-1.5 about-stat-block">
+        <div class="grid grid-cols-2 gap-4 sm:gap-6 pt-1 tabular-nums">
+          <div class="flex flex-col gap-1 about-stat-block">
             <span
               data-count-to="120"
               data-prefix=""
               data-suffix=""
               data-plus="true"
               data-decimals="0"
-              class="count-metric text-[46px] sm:text-[56px] font-bold tracking-[-0.045em] text-ink leading-none"
+              class="count-metric text-[40px] sm:text-[56px] font-bold tracking-[-0.045em] text-ink leading-none"
             >120<span class="text-vantage">+</span></span>
-            <span class="text-[14px] font-medium text-muted">Países soportados</span>
+            <span class="text-[13px] sm:text-[14px] font-medium text-muted">Países soportados</span>
           </div>
 
-          <div class="flex flex-col gap-1.5 about-stat-block">
+          <div class="flex flex-col gap-1 about-stat-block">
             <span
               data-count-to="75"
               data-prefix=""
               data-suffix=""
               data-plus="true"
               data-decimals="0"
-              class="count-metric text-[46px] sm:text-[56px] font-bold tracking-[-0.045em] text-ink leading-none"
+              class="count-metric text-[40px] sm:text-[56px] font-bold tracking-[-0.045em] text-ink leading-none"
             >75<span class="text-vantage">+</span></span>
-            <span class="text-[14px] font-medium text-muted">Divisas soportadas</span>
+            <span class="text-[13px] sm:text-[14px] font-medium text-muted">Divisas soportadas</span>
           </div>
         </div>
       </div>
@@ -483,53 +507,53 @@
   <!-- ========================================================================= -->
   <!-- SECTION 3 (SCREENSHOT 3): INTERACTIVE 4-TAB FEATURE SHOWCASE + MOCKUP     -->
   <!-- ========================================================================= -->
-  <section id="plataforma" class="max-w-[1200px] mx-auto px-5 lg:px-8 py-24 lg:py-32 border-b border-white/[0.06]">
-    <!-- Top 4-Tab Bar -->
-    <div id="feature-tabs-bar" class="relative grid grid-cols-2 md:grid-cols-4 border-b border-white/[0.10] mb-12 lg:mb-16">
-      <button data-feature-tab="budgeting" class="feature-tab-btn py-4 text-center text-[14px] sm:text-[15px] font-bold text-ink">
+  <section id="plataforma" class="max-w-[1200px] mx-auto px-4 sm:px-5 lg:px-8 py-16 sm:py-24 lg:py-32 border-b border-white/[0.06]">
+    <!-- Top 4-Tab Bar (Mobile: 2x2 Clean Pill Grid | Desktop: 4-Col Bar + Sliding Gold Underline) -->
+    <div id="feature-tabs-bar" class="relative grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-0 md:border-b md:border-white/[0.10] mb-10 md:mb-16">
+      <button data-feature-tab="budgeting" class="feature-tab-btn px-3 py-3 md:py-4 rounded-xl md:rounded-none text-center text-[13px] sm:text-[14px] md:text-[15px] font-bold text-ink">
         Tesorería inteligente
       </button>
-      <button data-feature-tab="swapping" class="feature-tab-btn py-4 text-center text-[14px] sm:text-[15px] font-medium text-muted hover:text-ink">
+      <button data-feature-tab="swapping" class="feature-tab-btn px-3 py-3 md:py-4 rounded-xl md:rounded-none text-center text-[13px] sm:text-[14px] md:text-[15px] font-medium text-muted hover:text-ink">
         Cambio instantáneo
       </button>
-      <button data-feature-tab="cards" class="feature-tab-btn py-4 text-center text-[14px] sm:text-[15px] font-medium text-muted hover:text-ink">
+      <button data-feature-tab="cards" class="feature-tab-btn px-3 py-3 md:py-4 rounded-xl md:rounded-none text-center text-[13px] sm:text-[14px] md:text-[15px] font-medium text-muted hover:text-ink">
         Tarjetas virtuales
       </button>
-      <button data-feature-tab="history" class="feature-tab-btn py-4 text-center text-[14px] sm:text-[15px] font-medium text-muted hover:text-ink">
+      <button data-feature-tab="history" class="feature-tab-btn px-3 py-3 md:py-4 rounded-xl md:rounded-none text-center text-[13px] sm:text-[14px] md:text-[15px] font-medium text-muted hover:text-ink">
         Historial y auditoría
       </button>
-      <div id="feature-tab-indicator" class="feature-tab-indicator"></div>
+      <div id="feature-tab-indicator" class="feature-tab-indicator hidden md:block"></div>
     </div>
 
     <!-- 2-Column Content & Silk-Lit iPhone Mockup -->
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
       <!-- Left Copy + Dual Mini-Features -->
-      <div id="feature-tab-copy" class="lg:col-span-5 flex flex-col justify-between gap-12">
-        <div class="flex flex-col gap-5">
-          <h2 id="ft-title" class="text-[34px] sm:text-[44px] font-bold tracking-[-0.035em] leading-[1.06] text-ink">
+      <div id="feature-tab-copy" class="lg:col-span-5 flex flex-col justify-between gap-8 sm:gap-12">
+        <div class="flex flex-col gap-4 sm:gap-5">
+          <h2 id="ft-title" class="text-[30px] sm:text-[44px] font-bold tracking-[-0.035em] leading-[1.08] sm:leading-[1.06] text-ink">
             Rendimiento Intuitivo Que Alinea Tus Metas
           </h2>
-          <p id="ft-desc" class="text-[15px] text-muted leading-relaxed">
+          <p id="ft-desc" class="text-[14px] sm:text-[15px] text-muted leading-relaxed">
             Gestiona liquidez, asigna presupuestos por entidad y desbloquea claridad financiera en un solo lugar. Los saldos y rendimientos se actualizan en tiempo real.
           </p>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2">
-          <div class="flex flex-col gap-3 pr-2">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-1">
+          <div class="flex flex-col gap-2.5 pr-2">
             <div class="w-9 h-9 rounded-xl bg-vantage/10 hairline-gold flex items-center justify-center text-vantage">
               <i id="ft-icon-1" data-lucide="smartphone" class="w-4 h-4"></i>
             </div>
-            <h3 id="ft-sub-1" class="text-[16px] font-bold text-ink">Onboarding ágil</h3>
+            <h3 id="ft-sub-1" class="text-[15px] sm:text-[16px] font-bold text-ink">Onboarding ágil</h3>
             <p id="ft-subdesc-1" class="text-[13px] text-muted leading-relaxed">
               Configura cuentas multi-divisa en minutos sin integraciones complejas y suma a tu equipo financiero al instante.
             </p>
           </div>
 
-          <div class="flex flex-col gap-3 sm:border-l sm:border-white/[0.08] sm:pl-6">
+          <div class="flex flex-col gap-2.5 pt-5 border-t border-white/[0.08] sm:pt-0 sm:border-t-0 sm:border-l sm:border-white/[0.08] sm:pl-6">
             <div class="w-9 h-9 rounded-xl bg-vantage/10 hairline-gold flex items-center justify-center text-vantage">
               <i id="ft-icon-2" data-lucide="network" class="w-4 h-4"></i>
             </div>
-            <h3 id="ft-sub-2" class="text-[16px] font-bold text-ink">Control en tiempo real</h3>
+            <h3 id="ft-sub-2" class="text-[15px] sm:text-[16px] font-bold text-ink">Control en tiempo real</h3>
             <p id="ft-subdesc-2" class="text-[13px] text-muted leading-relaxed">
               Define límites dinámicos por tarjeta, aprueba transferencias al toque y mantén cada presupuesto bajo llave.
             </p>
@@ -539,9 +563,9 @@
 
       <!-- Right Silk-Lit Phone Mockup Stage -->
       <div class="lg:col-span-7">
-        <div class="silk-stage hairline-strong rounded-[28px] p-8 sm:p-12 flex items-center justify-center min-h-[520px] sm:min-h-[580px] shadow-2xl">
+        <div class="silk-stage hairline-strong rounded-2xl sm:rounded-[28px] px-4 py-7 sm:p-12 flex items-center justify-center min-h-[470px] sm:min-h-[580px] shadow-2xl">
           <div id="showcase-phone-frame" class="showcase-phone">
-            <div id="showcase-phone-screen" class="showcase-phone-screen p-4 pb-5 min-h-[420px] flex flex-col gap-4">
+            <div id="showcase-phone-screen" class="showcase-phone-screen p-3.5 sm:p-4 pb-5 min-h-[410px] flex flex-col gap-3.5 sm:gap-4">
               <!-- Dynamically rendered high-craft Vantage iOS UI via app.js -->
             </div>
           </div>
@@ -551,14 +575,14 @@
   </section>
 
   <!-- INTERACTIVE YIELD SIMULATOR + INFINITE METAL CARD + FX SAVINGS CALCULATOR -->
-  <section id="funciones" class="max-w-[1200px] mx-auto px-5 lg:px-8 py-24 lg:py-28 flex flex-col gap-12 border-b border-white/[0.06]">
+  <section id="funciones" class="max-w-[1200px] mx-auto px-4 sm:px-5 lg:px-8 py-16 sm:py-24 lg:py-28 flex flex-col gap-10 sm:gap-12 border-b border-white/[0.06]">
     <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-4">
       <div class="flex flex-col gap-3 max-w-2xl">
         <div class="flex items-center gap-2.5">
           <span class="eyebrow-dot"></span>
           <span class="text-[12px] font-bold uppercase tracking-[0.16em] text-muted">Ecosistema Cuantitativo</span>
         </div>
-        <h2 class="split-heading text-[34px] sm:text-[46px] font-bold tracking-[-0.035em] leading-[1.06] text-ink">
+        <h2 class="split-heading text-[30px] sm:text-[46px] font-bold tracking-[-0.035em] leading-[1.08] sm:leading-[1.06] text-ink">
           Cada módulo diseñado para decidir más rápido.
         </h2>
       </div>
@@ -570,19 +594,19 @@
 
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
       <!-- Interactive Treasury Yield Simulator (7 cols) -->
-      <div class="bento-reveal lg:col-span-7 bg-surface hairline rounded-3xl p-6 sm:p-8 flex flex-col justify-between gap-8">
+      <div class="bento-reveal lg:col-span-7 bg-surface hairline rounded-3xl p-5 sm:p-8 flex flex-col justify-between gap-6 sm:gap-8">
         <div class="flex flex-col gap-2">
           <span class="text-[12px] font-bold text-vantage">Tesorería Activa</span>
-          <h3 class="text-[24px] font-bold tracking-tight text-ink">Haz crecer tu liquidez sin bloquearla.</h3>
+          <h3 class="text-[22px] sm:text-[24px] font-bold tracking-tight text-ink">Haz crecer tu liquidez sin bloquearla.</h3>
           <p class="text-[14px] text-muted max-w-lg">Selecciona divisa y monto para calcular tu rendimiento anual estimado en cuentas segregadas.</p>
         </div>
 
-        <div class="bg-obsidian hairline rounded-2xl p-5 flex flex-col gap-5">
+        <div class="bg-obsidian hairline rounded-2xl p-4 sm:p-5 flex flex-col gap-5">
           <div class="flex flex-wrap items-center justify-between gap-2">
-            <div class="flex items-center gap-1.5">
-              <button data-yield-cur="USD" class="yield-cur-btn tactile px-3 py-1.5 rounded-full text-[12px] font-bold bg-elevated text-ink hairline-gold">USD · 4.85%</button>
-              <button data-yield-cur="EUR" class="yield-cur-btn tactile px-3 py-1.5 rounded-full text-[12px] font-medium bg-surface text-muted hairline">EUR · 3.40%</button>
-              <button data-yield-cur="GBP" class="yield-cur-btn tactile px-3 py-1.5 rounded-full text-[12px] font-medium bg-surface text-muted hairline">GBP · 4.60%</button>
+            <div class="flex flex-wrap items-center gap-1.5">
+              <button data-yield-cur="USD" class="yield-cur-btn tactile px-3 py-1.5 rounded-full text-[11px] sm:text-[12px] font-bold bg-elevated text-ink hairline-gold">USD · 4.85%</button>
+              <button data-yield-cur="EUR" class="yield-cur-btn tactile px-3 py-1.5 rounded-full text-[11px] sm:text-[12px] font-medium bg-surface text-muted hairline">EUR · 3.40%</button>
+              <button data-yield-cur="GBP" class="yield-cur-btn tactile px-3 py-1.5 rounded-full text-[11px] sm:text-[12px] font-medium bg-surface text-muted hairline">GBP · 4.60%</button>
             </div>
             <span class="text-[11px] text-muted">Liquidez T+1</span>
           </div>
@@ -590,15 +614,15 @@
           <div class="flex flex-col gap-2">
             <div class="flex justify-between text-[13px] tabular-nums">
               <span class="text-muted">Liquidez asignada</span>
-              <span id="yield-principal-out" class="font-bold text-ink text-[16px]">$500,000</span>
+              <span id="yield-principal-out" class="font-bold text-ink text-[15px] sm:text-[16px]">$500,000</span>
             </div>
             <input id="yield-slider" type="range" min="50000" max="5000000" step="50000" value="500000" class="w-full" />
           </div>
 
-          <div class="flex items-end justify-between pt-3 border-t border-white/[0.06] tabular-nums">
+          <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-2 pt-3 border-t border-white/[0.06] tabular-nums">
             <div class="flex flex-col">
               <span class="text-[11px] uppercase tracking-wider text-muted">Rendimiento anual</span>
-              <span id="yield-annual-out" class="text-[28px] font-bold text-vantage">+$24,250 / año</span>
+              <span id="yield-annual-out" class="text-[24px] sm:text-[28px] font-bold text-vantage">+$24,250 / año</span>
             </div>
             <span id="yield-monthly-out" class="text-[13px] text-gain font-bold">+$2,021 / mes</span>
           </div>
@@ -606,14 +630,14 @@
       </div>
 
       <!-- Vantage Infinite Metal Card (5 cols) -->
-      <div class="bento-reveal lg:col-span-5 bg-surface hairline rounded-3xl p-6 sm:p-8 flex flex-col justify-between gap-8" style="perspective: 900px;">
+      <div class="bento-reveal lg:col-span-5 bg-surface hairline rounded-3xl p-5 sm:p-8 flex flex-col justify-between gap-6 sm:gap-8" style="perspective: 900px;">
         <div class="flex flex-col gap-2">
           <span class="text-[12px] font-bold text-vantage">Vantage Infinite</span>
-          <h3 class="text-[24px] font-bold tracking-tight text-ink">Metal negro, cero FX en 140+ países.</h3>
+          <h3 class="text-[22px] sm:text-[24px] font-bold tracking-tight text-ink">Metal negro, cero FX en 140+ países.</h3>
           <p class="text-[14px] text-muted">Límites ajustables en tiempo real, tarjetas virtuales desechables y congelamiento de un toque.</p>
         </div>
 
-        <div class="metal-card rounded-2xl p-6 aspect-[1.6/1] bg-gradient-to-br from-[#1E1E24] via-[#111115] to-[#08080A] hairline-strong flex flex-col justify-between shadow-xl">
+        <div class="metal-card rounded-2xl p-5 sm:p-6 aspect-[1.6/1] bg-gradient-to-br from-[#1E1E24] via-[#111115] to-[#08080A] hairline-strong flex flex-col justify-between shadow-xl">
           <div class="flex items-center justify-between">
             <div class="flex items-center gap-2">
               <svg width="16" height="12" viewBox="0 0 221 167" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -627,7 +651,7 @@
             </div>
             <span class="text-[10px] uppercase tracking-widest text-vantage font-bold">0% FX</span>
           </div>
-          <div class="text-[17px] tracking-[0.16em] text-ink/90 font-medium tabular-nums">••••  ••••  ••••  4092</div>
+          <div class="text-[15px] sm:text-[17px] tracking-[0.12em] sm:tracking-[0.16em] text-ink/90 font-medium tabular-nums whitespace-nowrap">••••  ••••  ••••  4092</div>
           <div class="flex justify-between text-[11px] text-muted tabular-nums">
             <span>PRIVATE WEALTH</span>
             <span>09/29</span>
@@ -636,31 +660,31 @@
       </div>
 
       <!-- FX Savings Calculator (12 cols) -->
-      <div id="calculadora" class="bento-reveal lg:col-span-12 bg-surface hairline rounded-3xl p-6 sm:p-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+      <div id="calculadora" class="bento-reveal lg:col-span-12 bg-surface hairline rounded-3xl p-5 sm:p-8 grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center">
         <div class="lg:col-span-5 flex flex-col gap-2">
           <span class="text-[12px] font-bold text-vantage">Calculadora de Ahorro FX</span>
-          <h3 class="text-[26px] font-bold tracking-tight text-ink">Compara Vantage contra tu banco tradicional.</h3>
+          <h3 class="text-[22px] sm:text-[26px] font-bold tracking-tight text-ink">Compara Vantage contra tu banco tradicional.</h3>
           <p class="text-[14px] text-muted leading-relaxed">
             Mientras la banca tradicional aplica un spread promedio del 2.8% en transferencias internacionales, Vantage opera a tasa mid-market real.
           </p>
         </div>
 
-        <div class="lg:col-span-7 bg-obsidian hairline rounded-2xl p-5 flex flex-col gap-5">
+        <div class="lg:col-span-7 bg-obsidian hairline rounded-2xl p-4 sm:p-5 flex flex-col gap-5">
           <div class="flex flex-col gap-2">
-            <div class="flex justify-between text-[13px] tabular-nums">
-              <span class="text-muted">Volumen mensual transferido</span>
-              <span id="fx-vol-out" class="font-bold text-ink text-[16px]">$100,000 / mes</span>
+            <div class="flex justify-between gap-2 text-[13px] tabular-nums">
+              <span class="text-muted">Volumen mensual</span>
+              <span id="fx-vol-out" class="font-bold text-ink text-[15px] sm:text-[16px]">$100,000 / mes</span>
             </div>
             <input id="fx-vol-slider" type="range" min="10000" max="500000" step="10000" value="100000" class="w-full" />
           </div>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 tabular-nums">
             <div class="bg-surface hairline rounded-xl p-4 flex flex-col gap-1">
               <span class="text-[11px] uppercase tracking-wider text-muted">Comisión oculta bancaria (2.8%)</span>
-              <span id="fx-bank-cost" class="text-[22px] font-bold text-muted line-through">$33,600 / año</span>
+              <span id="fx-bank-cost" class="text-[20px] sm:text-[22px] font-bold text-muted line-through">$33,600 / año</span>
             </div>
             <div class="bg-surface hairline-gold rounded-xl p-4 flex flex-col gap-1">
               <span class="text-[11px] uppercase tracking-wider text-vantage">Ahorro neto con Vantage</span>
-              <span id="fx-vantage-save" class="text-[22px] font-bold text-gain">+$33,600 / año</span>
+              <span id="fx-vantage-save" class="text-[20px] sm:text-[22px] font-bold text-gain">+$33,600 / año</span>
             </div>
           </div>
         </div>
@@ -671,14 +695,14 @@
   <!-- ========================================================================= -->
   <!-- SECTION 4 (SCREENSHOT 4): INTEGRATIONS ORBITAL ARC                        -->
   <!-- ========================================================================= -->
-  <section id="integraciones" class="relative overflow-hidden pt-24 lg:pt-32 pb-0 border-b border-white/[0.06]">
-    <div class="max-w-[1200px] mx-auto px-5 lg:px-8 flex flex-col items-center text-center gap-5">
+  <section id="integraciones" class="relative overflow-hidden pt-16 sm:pt-24 lg:pt-32 pb-0 border-b border-white/[0.06]">
+    <div class="max-w-[1200px] mx-auto px-4 sm:px-5 lg:px-8 flex flex-col items-center text-center gap-4 sm:gap-5">
       <div class="integ-fade flex items-center gap-2.5">
         <span class="eyebrow-dot"></span>
         <span class="text-[12px] font-bold uppercase tracking-[0.16em] text-muted">Integraciones</span>
       </div>
 
-      <h2 class="split-heading text-[36px] sm:text-[50px] font-bold tracking-[-0.04em] leading-[1.05] text-ink max-w-2xl">
+      <h2 class="split-heading text-[30px] sm:text-[50px] font-bold tracking-[-0.04em] leading-[1.08] sm:leading-[1.05] text-ink max-w-2xl">
         Se Conecta Con Las Herramientas Que Ya Usas
       </h2>
     </div>
@@ -838,9 +862,9 @@
       </div>
 
       <!-- Central Glowing Vantage Emblem Tile + Caption (always crisp above mask) -->
-      <div class="orbital-core-wrap absolute left-1/2 bottom-8 sm:bottom-12 -translate-x-1/2 flex flex-col items-center gap-4 text-center z-20">
-        <div class="orbital-core w-[76px] h-[76px] sm:w-[90px] sm:h-[90px] rounded-[22px] flex items-center justify-center">
-          <svg width="36" height="28" viewBox="0 0 221 167" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <div class="orbital-core-wrap absolute left-1/2 bottom-5 sm:bottom-12 -translate-x-1/2 flex flex-col items-center gap-2.5 sm:gap-4 text-center z-20">
+        <div class="orbital-core w-14 h-14 sm:w-[90px] sm:h-[90px] rounded-2xl sm:rounded-[22px] flex items-center justify-center">
+          <svg class="w-6 h-5 sm:w-9 sm:h-7" viewBox="0 0 221 167" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M0 0L110.109 166.858L127.539 141.473L32.7384 0C32.7384 0 0 0.242599 0 0Z" fill="#F2CE16"/>
             <path d="M110.109 101.493L127.545 76.2321L76.2324 0H43.2451L110.109 101.493Z" fill="#F2CE16"/>
             <path d="M115.195 44.7073L131.611 69.3921L177.767 0.487793H145.029L115.195 44.7073Z" fill="#F2CE16"/>
@@ -848,7 +872,7 @@
             <path d="M109.937 21.7641C116.101 21.7641 121.098 16.8921 121.098 10.8821C121.098 4.87207 116.101 0 109.937 0C103.773 0 98.7759 4.87207 98.7759 10.8821C98.7759 16.8921 103.773 21.7641 109.937 21.7641Z" fill="#F2CE16"/>
           </svg>
         </div>
-        <p class="text-[14px] sm:text-[15px] font-medium text-ink/90 leading-snug max-w-[240px]">
+        <p class="text-[12px] sm:text-[15px] font-medium text-ink/90 leading-snug max-w-[210px] sm:max-w-[240px]">
           100+ integraciones disponibles<br />y en crecimiento
         </p>
       </div>
@@ -856,14 +880,14 @@
   </section>
 
   <!-- TRANSPARENT PLANS / TIERS -->
-  <section id="planes" class="bg-surface/30 py-24 lg:py-28 border-b border-white/[0.06]">
-    <div class="max-w-[1200px] mx-auto px-5 lg:px-8 flex flex-col gap-12">
+  <section id="planes" class="bg-surface/30 py-16 sm:py-24 lg:py-28 border-b border-white/[0.06]">
+    <div class="max-w-[1200px] mx-auto px-4 sm:px-5 lg:px-8 flex flex-col gap-10 sm:gap-12">
       <div class="flex flex-col items-center text-center gap-3 max-w-xl mx-auto">
         <div class="flex items-center gap-2.5">
           <span class="eyebrow-dot"></span>
           <span class="text-[12px] font-bold uppercase tracking-[0.16em] text-muted">Membresías</span>
         </div>
-        <h2 class="split-heading text-[34px] sm:text-[44px] font-bold tracking-[-0.035em] leading-[1.06] text-ink">
+        <h2 class="split-heading text-[30px] sm:text-[44px] font-bold tracking-[-0.035em] leading-[1.08] sm:leading-[1.06] text-ink">
           Precios transparentes, cero letras pequeñas.
         </h2>
       </div>
@@ -921,13 +945,13 @@
   <!-- ========================================================================= -->
   <!-- SECTION 5 (SCREENSHOT 5): BLOG / INSIGHTS 3-CARD EDITORIAL GRID           -->
   <!-- ========================================================================= -->
-  <section id="blog" class="max-w-[1200px] mx-auto px-5 lg:px-8 py-24 lg:py-32 border-b border-white/[0.06]">
-    <div class="flex flex-col gap-4 mb-12">
+  <section id="blog" class="max-w-[1200px] mx-auto px-4 sm:px-5 lg:px-8 py-16 sm:py-24 lg:py-32 border-b border-white/[0.06]">
+    <div class="flex flex-col gap-3 sm:gap-4 mb-10 sm:mb-12">
       <div class="flex items-center gap-2.5">
         <span class="eyebrow-dot"></span>
         <span class="text-[12px] font-bold uppercase tracking-[0.16em] text-muted">Blog</span>
       </div>
-      <h2 class="split-heading text-[36px] sm:text-[48px] font-bold tracking-[-0.04em] leading-[1.06] text-ink">
+      <h2 class="split-heading text-[30px] sm:text-[48px] font-bold tracking-[-0.04em] leading-[1.08] sm:leading-[1.06] text-ink">
         Mantente Al Día Con Nuestros Análisis
       </h2>
     </div>
@@ -995,39 +1019,39 @@
   <!-- ========================================================================= -->
   <!-- SECTION 6 (SCREENSHOT 6): FAQ WITH CATEGORY TABS + 3D COIN + SPLIT TILES  -->
   <!-- ========================================================================= -->
-  <section id="faq" class="max-w-[1200px] mx-auto px-5 lg:px-8 py-24 lg:py-32">
+  <section id="faq" class="max-w-[1200px] mx-auto px-4 sm:px-5 lg:px-8 py-16 sm:py-24 lg:py-32">
     <!-- Top Header + Category Filter Pills -->
-    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-5 sm:gap-6 mb-10 sm:mb-14">
       <div class="flex flex-col gap-3">
         <div class="flex items-center gap-2.5">
           <span class="eyebrow-dot"></span>
           <span class="text-[12px] font-bold uppercase tracking-[0.16em] text-muted">FAQ</span>
         </div>
-        <h2 class="split-heading text-[36px] sm:text-[48px] font-bold tracking-[-0.04em] leading-[1.06] text-ink">
+        <h2 class="split-heading text-[30px] sm:text-[48px] font-bold tracking-[-0.04em] leading-[1.08] sm:leading-[1.06] text-ink">
           ¿Preguntas? Estamos Aquí Para Ayudar.
         </h2>
       </div>
 
       <!-- Category Tabs -->
       <div class="flex flex-wrap items-center gap-2" role="tablist" aria-label="Categorías de preguntas frecuentes">
-        <button data-faq-cat="general" class="faq-cat-btn tactile px-4 py-2 rounded-lg text-[13px] font-bold bg-vantage text-obsidian shadow-[0_0_20px_-4px_rgba(242,206,22,0.5)]">
+        <button data-faq-cat="general" class="faq-cat-btn tactile px-3.5 sm:px-4 py-2 rounded-lg text-[12px] sm:text-[13px] font-bold bg-vantage text-obsidian shadow-[0_0_20px_-4px_rgba(242,206,22,0.5)]">
           General
         </button>
-        <button data-faq-cat="implementacion" class="faq-cat-btn tactile px-4 py-2 rounded-lg text-[13px] font-medium bg-surface hairline text-muted hover:text-ink">
+        <button data-faq-cat="implementacion" class="faq-cat-btn tactile px-3.5 sm:px-4 py-2 rounded-lg text-[12px] sm:text-[13px] font-medium bg-surface hairline text-muted hover:text-ink">
           Implementación
         </button>
-        <button data-faq-cat="cumplimiento" class="faq-cat-btn tactile px-4 py-2 rounded-lg text-[13px] font-medium bg-surface hairline text-muted hover:text-ink">
+        <button data-faq-cat="cumplimiento" class="faq-cat-btn tactile px-3.5 sm:px-4 py-2 rounded-lg text-[12px] sm:text-[13px] font-medium bg-surface hairline text-muted hover:text-ink">
           Cumplimiento
         </button>
       </div>
     </div>
 
     <!-- 2-Column Body: 3D Gold Coin + Split-Tile Accordion -->
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
       <!-- Left 3D Visual -->
       <div class="lg:col-span-5 flex items-center justify-center">
-        <div id="faq-coin-float" class="relative w-full max-w-[360px] aspect-square flex items-center justify-center">
-          <div class="absolute inset-10 rounded-full bg-vantage/10 blur-3xl pointer-events-none"></div>
+        <div id="faq-coin-float" class="relative w-full max-w-[210px] sm:max-w-[300px] lg:max-w-[360px] aspect-square flex items-center justify-center">
+          <div class="absolute inset-8 sm:inset-10 rounded-full bg-vantage/10 blur-3xl pointer-events-none"></div>
           <img
             src="./assets/faq-3d-coin.jpg"
             alt="Emblema 3D dorado de capital Vantage"
@@ -1037,33 +1061,33 @@
       </div>
 
       <!-- Right Split-Tile FAQ List -->
-      <div id="faq-list-container" class="lg:col-span-7 flex flex-col gap-3">
+      <div id="faq-list-container" class="lg:col-span-7 flex flex-col gap-2.5 sm:gap-3">
         <!-- Populated dynamically by app.js per active category -->
       </div>
     </div>
   </section>
 
   <!-- SIGNATURE VANTAGE GOLD CLOSING CTA BANNER -->
-  <section class="max-w-[1200px] mx-auto px-5 lg:px-8 pb-20">
-    <div id="closing-cta-banner" class="bg-vantage text-obsidian rounded-[32px] p-8 sm:p-12 lg:p-16 flex flex-col lg:flex-row lg:items-end justify-between gap-8">
-      <div class="flex flex-col gap-4 max-w-xl">
-        <div class="inline-flex items-center gap-2 self-start px-3 py-1 rounded-full bg-obsidian/10 text-[12px] font-bold">
+  <section class="max-w-[1200px] mx-auto px-4 sm:px-5 lg:px-8 pb-16 sm:pb-20">
+    <div id="closing-cta-banner" class="bg-vantage text-obsidian rounded-3xl sm:rounded-[32px] p-6 sm:p-12 lg:p-16 flex flex-col lg:flex-row lg:items-end justify-between gap-7 sm:gap-8">
+      <div class="flex flex-col gap-3.5 sm:gap-4 max-w-xl">
+        <div class="inline-flex items-center gap-2 self-start px-3 py-1 rounded-full bg-obsidian/10 text-[11px] sm:text-[12px] font-bold">
           <span>Disponible en iOS, Android y Web</span>
         </div>
-        <h2 class="split-heading text-[34px] sm:text-[48px] font-bold tracking-[-0.035em] leading-[1.02]">
+        <h2 class="split-heading text-[30px] sm:text-[48px] font-bold tracking-[-0.035em] leading-[1.04] sm:leading-[1.02]">
           Eleva la precisión de tu capital global.
         </h2>
-        <p class="text-[15px] sm:text-[16px] text-obsidian/75 font-medium max-w-md">
+        <p class="text-[14px] sm:text-[16px] text-obsidian/75 font-medium max-w-md">
           Onboarding en menos de 48 horas para patrimonios privados, founders y tesorerías internacionales.
         </p>
       </div>
 
-      <div class="flex flex-col sm:flex-row gap-3 shrink-0">
-        <button id="cta-demo-btn" class="tactile px-6 py-4 rounded-full bg-obsidian/10 border border-obsidian/20 text-obsidian text-[14px] font-bold hover:bg-obsidian/15 flex items-center justify-center gap-2">
+      <div class="flex flex-col sm:flex-row gap-3 shrink-0 w-full lg:w-auto">
+        <button id="cta-demo-btn" class="tactile px-6 py-3.5 sm:py-4 rounded-full bg-obsidian/10 border border-obsidian/20 text-obsidian text-[14px] font-bold hover:bg-obsidian/15 flex items-center justify-center gap-2">
           <i data-lucide="play" class="w-4 h-4 fill-obsidian"></i>
           <span>Ver demo interactiva</span>
         </button>
-        <button id="cta-access-btn" class="tactile px-7 py-4 rounded-full bg-obsidian text-ink text-[14px] font-bold hover:bg-[#18181D] flex items-center justify-center gap-2">
+        <button id="cta-access-btn" class="tactile px-7 py-3.5 sm:py-4 rounded-full bg-obsidian text-ink text-[14px] font-bold hover:bg-[#18181D] flex items-center justify-center gap-2">
           <span>Solicitar invitación</span>
           <i data-lucide="arrow-up-right" class="w-4 h-4 text-vantage"></i>
         </button>
@@ -1175,7 +1199,7 @@
         </div>
 
         <!-- Final Balanced Copyright Bar -->
-        <div class="bg-surface/75 hairline rounded-xl px-5 py-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-[12px] text-muted">
+        <div class="bg-surface/75 hairline rounded-xl px-4 sm:px-5 py-4 flex flex-col sm:flex-row items-center justify-between gap-2 text-center sm:text-left text-[12px] text-muted">
           <span>© 2026 Vantage Capital. Todos los derechos reservados.</span>
           <span class="text-ink/85 font-medium tracking-tight">Global Access. <span class="text-vantage">Local Intelligence.</span></span>
         </div>
@@ -1187,21 +1211,21 @@
   <!-- INTERACTIVE PRODUCT DEMO MODAL -->
   <div id="demo-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-3 sm:p-6 transition-opacity duration-200 opacity-0">
     <div id="demo-modal-card" class="w-full max-w-4xl bg-obsidian hairline-strong rounded-2xl overflow-hidden shadow-2xl flex flex-col max-h-[88vh] transform scale-95 transition-transform duration-200">
-      <div class="px-5 py-3.5 bg-surface border-b border-white/[0.07] flex items-center justify-between gap-3">
-        <div class="flex items-center gap-2.5">
-          <span class="w-2 h-2 rounded-full bg-vantage"></span>
-          <span class="text-[13px] font-bold text-ink">Vantage Capital — Demo Interactiva</span>
+      <div class="px-4 sm:px-5 py-3 bg-surface border-b border-white/[0.07] flex flex-wrap items-center justify-between gap-2.5">
+        <div class="flex items-center gap-2 min-w-0">
+          <span class="w-2 h-2 rounded-full bg-vantage shrink-0"></span>
+          <span class="text-[13px] font-bold text-ink truncate">Vantage Capital — Demo</span>
         </div>
-        <div class="flex items-center gap-1.5 bg-obsidian p-1 rounded-lg hairline text-[12px]">
-          <button data-demo-tab="overview" class="demo-tab-btn tactile px-3 py-1 rounded-md bg-elevated text-ink font-bold hairline-strong">Resumen</button>
-          <button data-demo-tab="portfolio" class="demo-tab-btn tactile px-3 py-1 rounded-md text-muted hover:text-ink font-medium">Portafolio</button>
-          <button data-demo-tab="card" class="demo-tab-btn tactile px-3 py-1 rounded-md text-muted hover:text-ink font-medium">Tarjeta</button>
-        </div>
-        <button id="demo-close-btn" class="tactile w-8 h-8 rounded-lg hover:bg-elevated flex items-center justify-center text-muted hover:text-ink">
+        <button id="demo-close-btn" class="sm:order-3 tactile w-8 h-8 rounded-lg hover:bg-elevated flex items-center justify-center text-muted hover:text-ink shrink-0">
           <i data-lucide="x" class="w-4 h-4"></i>
         </button>
+        <div class="order-3 sm:order-2 w-full sm:w-auto grid grid-cols-3 sm:flex items-center gap-1 bg-obsidian p-1 rounded-lg hairline text-[12px]">
+          <button data-demo-tab="overview" class="demo-tab-btn tactile px-3 py-1.5 sm:py-1 rounded-md bg-elevated text-ink font-bold hairline-strong text-center">Resumen</button>
+          <button data-demo-tab="portfolio" class="demo-tab-btn tactile px-3 py-1.5 sm:py-1 rounded-md text-muted hover:text-ink font-medium text-center">Portafolio</button>
+          <button data-demo-tab="card" class="demo-tab-btn tactile px-3 py-1.5 sm:py-1 rounded-md text-muted hover:text-ink font-medium text-center">Tarjeta</button>
+        </div>
       </div>
-      <div id="demo-modal-body" class="p-5 sm:p-6 overflow-y-auto flex-1"></div>
+      <div id="demo-modal-body" class="p-4 sm:p-6 overflow-y-auto flex-1"></div>
     </div>
   </div>
 
@@ -1251,7 +1275,7 @@
   </div>
 
   <!-- TOAST CONTAINER -->
-  <div id="toast-container" class="fixed bottom-6 right-6 z-50 flex flex-col gap-2 pointer-events-none max-w-sm"></div>
+  <div id="toast-container" class="fixed bottom-4 sm:bottom-6 left-4 right-4 sm:left-auto sm:right-6 z-50 flex flex-col gap-2 pointer-events-none sm:max-w-sm"></div>
 
   <script src="./app.js" defer></script>
 </body>

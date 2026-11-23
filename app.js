@@ -309,6 +309,7 @@
     featureTabBtns.forEach((b) => {
       const isMatch = b.dataset.featureTab === key;
       if (isMatch) activeBtn = b;
+      b.classList.toggle('is-active', isMatch);
       b.classList.toggle('text-ink', isMatch);
       b.classList.toggle('font-bold', isMatch);
       b.classList.toggle('text-muted', !isMatch);
@@ -512,18 +513,18 @@
     faqContainer.innerHTML = faqCatalog[cat]
       .map(
         (item, idx) => `
-        <div class="faq-item flex items-stretch gap-2.5" data-open="${idx === 0 ? 'true' : 'false'}">
+        <div class="faq-item flex items-stretch gap-2 sm:gap-2.5" data-open="${idx === 0 ? 'true' : 'false'}">
           <div class="faq-card-main flex-1 bg-surface/90 hairline rounded-xl overflow-hidden transition-colors">
-            <button type="button" class="faq-trigger w-full px-5 py-[18px] text-left flex items-center justify-between gap-4">
-              <span class="text-[15px] font-medium text-ink leading-snug">${item.q}</span>
+            <button type="button" class="faq-trigger w-full px-4 sm:px-5 py-4 sm:py-[18px] text-left flex items-center justify-between gap-3">
+              <span class="text-[14px] sm:text-[15px] font-medium text-ink leading-snug">${item.q}</span>
             </button>
             <div class="faq-content">
               <div class="overflow-hidden">
-                <p class="px-5 pb-5 text-[14px] text-muted leading-relaxed">${item.a}</p>
+                <p class="px-4 sm:px-5 pb-4 sm:pb-5 text-[13px] sm:text-[14px] text-muted leading-relaxed">${item.a}</p>
               </div>
             </div>
           </div>
-          <button type="button" aria-label="Expandir respuesta" class="faq-trigger faq-plus-box tactile w-14 shrink-0 bg-surface/90 hairline hover:border-vantage/45 rounded-xl flex items-center justify-center text-ink">
+          <button type="button" aria-label="Expandir respuesta" class="faq-trigger faq-plus-box tactile w-11 sm:w-14 shrink-0 bg-surface/90 hairline hover:border-vantage/45 rounded-xl flex items-center justify-center text-ink">
             <i data-lucide="plus" class="faq-plus w-4 h-4"></i>
           </button>
         </div>
@@ -856,11 +857,41 @@
     });
   });
 
+  // Mobile navigation drawer toggle
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenuIcon = document.getElementById('mobile-menu-icon');
+  const mobileNavDrawer = document.getElementById('mobile-nav-drawer');
+
+  function setMobileDrawer(open) {
+    if (!mobileNavDrawer || !mobileMenuBtn) return;
+    mobileNavDrawer.classList.toggle('hidden', !open);
+    mobileMenuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    if (mobileMenuIcon) {
+      mobileMenuIcon.setAttribute('data-lucide', open ? 'x' : 'menu');
+      refreshIcons();
+    }
+  }
+
+  if (mobileMenuBtn && mobileNavDrawer) {
+    mobileMenuBtn.addEventListener('click', () => {
+      const isClosed = mobileNavDrawer.classList.contains('hidden');
+      setMobileDrawer(isClosed);
+    });
+    mobileNavDrawer.querySelectorAll('.mobile-nav-link').forEach((link) => {
+      link.addEventListener('click', () => setMobileDrawer(false));
+    });
+    const drawerDemo = document.getElementById('mobile-drawer-demo-btn');
+    if (drawerDemo) drawerDemo.addEventListener('click', () => { setMobileDrawer(false); openDemoModal(); });
+    const drawerAccess = document.getElementById('mobile-drawer-access-btn');
+    if (drawerAccess) drawerAccess.addEventListener('click', () => { setMobileDrawer(false); openAccessModal('Private Wealth'); });
+  }
+
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
       closeAccessModal();
       closeDemoModal();
       closeBlogModal();
+      setMobileDrawer(false);
     }
   });
 
@@ -964,11 +995,12 @@
       }
     }
 
+    const isMobileScreen = window.innerWidth < 1024;
     heroTl
-      .from('.hero-enter', { y: 28, autoAlpha: 0, stagger: 0.1 }, '-=0.55')
-      .from('#hero-phone-parallax', { y: 74, scale: 0.92, autoAlpha: 0, duration: 1.05, ease: 'power4.out' }, '-=0.55')
-      .from('.hero-enter-left', { x: -46, y: 22, autoAlpha: 0, duration: 0.9 }, '-=0.75')
-      .from('.hero-enter-right', { x: 46, y: 22, autoAlpha: 0, duration: 0.9 }, '<0.1');
+      .from('.hero-enter', { y: 26, autoAlpha: 0, stagger: 0.1 }, '-=0.55')
+      .from('#hero-phone-parallax', { y: 64, scale: 0.93, autoAlpha: 0, duration: 1.0, ease: 'power4.out' }, '-=0.55')
+      .from('.hero-enter-left', { x: isMobileScreen ? 0 : -46, y: 24, autoAlpha: 0, duration: 0.85 }, '-=0.72')
+      .from('.hero-enter-right', { x: isMobileScreen ? 0 : 46, y: 24, autoAlpha: 0, duration: 0.85 }, '<0.1');
 
     // B. TRUSTED BY ENTRANCE (Infinite leftward marquee runs smoothly via CSS @keyframes marqueeLeft)
     const trustedSection = document.getElementById('trusted');
@@ -1198,15 +1230,15 @@
       });
 
       gsap.from('#faq-list-container .faq-item', {
-        x: 34,
-        y: 16,
+        x: window.innerWidth < 1024 ? 0 : 30,
+        y: 20,
         autoAlpha: 0,
         duration: 0.72,
-        stagger: 0.09,
+        stagger: 0.08,
         ease: 'power3.out',
         scrollTrigger: {
           trigger: '#faq-list-container',
-          start: 'top 85%',
+          start: 'top 86%',
           toggleActions: 'play none none reverse',
         },
       });
