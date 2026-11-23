@@ -1,0 +1,536 @@
+:root {
+  --bg-obsidian: #08080A;
+  --bg-surface: #111114;
+  --bg-elevated: #18181D;
+  --gold: #F2CE16;
+  --gold-soft: rgba(242, 206, 22, 0.16);
+  --gain: #30D158;
+  --ink: #F5F5F7;
+  --muted: #8E8E93;
+  --ease-out-expo: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-spring: cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-obsidian);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-obsidian);
+  color: var(--ink);
+  font-family: 'Satoshi', -apple-system, BlinkMacSystemFont, sans-serif;
+  overflow-x: clip;
+}
+
+/* Masked Word & Char Text Reveal Helpers (Fexiva-style) */
+.reveal-word-mask,
+.reveal-char-mask {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  padding-bottom: 0.12em;
+  margin-bottom: -0.12em;
+}
+.reveal-word,
+.reveal-char {
+  display: inline-block;
+  will-change: transform, opacity;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1, "ss01" 1;
+}
+
+/* Hairline borders */
+.hairline {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.hairline-strong {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+.hairline-gold {
+  border: 1px solid rgba(242, 206, 22, 0.38);
+}
+
+/* Scroll Progress Hairline */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  z-index: 60;
+  background: linear-gradient(90deg, rgba(242, 206, 22, 0.35), #F2CE16 65%, #FFF2A6 100%);
+  transform-origin: left center;
+  transform: scaleX(0);
+  pointer-events: none;
+}
+
+/* Hero obsidian warm ambience */
+.hero-ambience {
+  background:
+    radial-gradient(62% 48% at 50% 42%, rgba(242, 206, 22, 0.095) 0%, rgba(242, 206, 22, 0.02) 45%, transparent 72%),
+    radial-gradient(40% 35% at 50% 0%, rgba(255, 255, 255, 0.04) 0%, transparent 70%);
+}
+
+/* Fexiva signature luminous glass button (adapted to Vantage Gold) */
+.btn-glow {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: radial-gradient(120% 140% at 50% 100%, rgba(242, 206, 22, 0.28) 0%, rgba(242, 206, 22, 0.07) 60%, rgba(17, 17, 20, 0.92) 100%);
+  border: 1px solid rgba(242, 206, 22, 0.45);
+  box-shadow:
+    0 0 28px -4px rgba(242, 206, 22, 0.34),
+    0 8px 20px -8px rgba(0, 0, 0, 0.7),
+    inset 0 1px 0 rgba(255, 255, 255, 0.16);
+  color: #F5F5F7;
+  transition: transform 180ms var(--ease-out-expo), box-shadow 260ms var(--ease-out-expo), border-color 220ms ease, background 220ms ease;
+}
+.btn-glow:hover {
+  border-color: rgba(242, 206, 22, 0.78);
+  background: radial-gradient(120% 140% at 50% 100%, rgba(242, 206, 22, 0.40) 0%, rgba(242, 206, 22, 0.14) 60%, rgba(24, 24, 29, 0.95) 100%);
+  box-shadow:
+    0 0 38px -2px rgba(242, 206, 22, 0.50),
+    0 12px 26px -8px rgba(0, 0, 0, 0.8),
+    inset 0 1px 0 rgba(255, 255, 255, 0.24);
+  transform: translateY(-1px);
+}
+.btn-glow:active {
+  transform: scale(0.97);
+}
+
+/* Eyebrow indicator square (Fexiva style) */
+.eyebrow-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 1.5px;
+  background-color: #F2CE16;
+  display: inline-block;
+  flex-shrink: 0;
+  box-shadow: 0 0 10px rgba(242, 206, 22, 0.6);
+}
+
+/* Tactile micro-interactions */
+.tactile {
+  transition: transform 140ms var(--ease-out-expo), background-color 160ms var(--ease-out-expo), border-color 160ms var(--ease-out-expo), color 160ms var(--ease-out-expo), opacity 160ms var(--ease-out-expo);
+  will-change: transform;
+}
+.tactile:active {
+  transform: scale(0.97);
+}
+
+.swap-spin {
+  transition: transform 280ms var(--ease-spring), border-color 160ms ease;
+}
+
+/* Range slider precision */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: rgba(255, 255, 255, 0.12);
+  height: 4px;
+  border-radius: 999px;
+  outline: none;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #F2CE16;
+  cursor: pointer;
+  border: 2.5px solid #08080A;
+  transition: transform 140ms var(--ease-out-expo);
+}
+input[type="range"]::-webkit-slider-thumb:active {
+  transform: scale(1.18);
+}
+
+/* Seamless Infinite Leftward Marquee */
+.marquee-viewport {
+  position: relative;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
+}
+.marquee-track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  will-change: transform;
+  animation: marqueeLeft 28s linear infinite;
+}
+.marquee-viewport:hover .marquee-track {
+  animation-play-state: paused;
+}
+.marquee-group {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: 3.75rem;
+  padding-right: 3.75rem;
+}
+@media (min-width: 640px) {
+  .marquee-group {
+    gap: 5rem;
+    padding-right: 5rem;
+  }
+}
+@keyframes marqueeLeft {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+.brand-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: rgba(245, 245, 247, 0.56);
+  transition: color 220ms ease, transform 220ms var(--ease-out-expo);
+  user-select: none;
+  white-space: nowrap;
+}
+.brand-logo:hover {
+  color: #F5F5F7;
+  transform: translateY(-1px);
+}
+
+/* Editorial Image Reveal Wrapper */
+.img-reveal-wrap {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+}
+.img-reveal-wrap img {
+  will-change: transform;
+  transition: transform 640ms var(--ease-out-expo);
+}
+.blog-card:hover .img-reveal-wrap img,
+.about-img-card:hover img {
+  transform: scale(1.045);
+}
+
+/* Fexiva Tabbed Feature Showcase */
+.feature-tab-btn {
+  position: relative;
+  transition: color 220ms ease;
+}
+.feature-tab-indicator {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(242, 206, 22, 0.65), #F2CE16, rgba(242, 206, 22, 0.65));
+  box-shadow: 0 0 14px rgba(242, 206, 22, 0.65);
+  border-radius: 999px;
+  pointer-events: none;
+  will-change: transform, width;
+}
+
+/* Silk-lit ambient phone stage (Screenshot 3 aesthetic in Vantage Gold/Obsidian) */
+.silk-stage {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(85% 90% at 80% 15%, rgba(242, 206, 22, 0.22) 0%, transparent 55%),
+    radial-gradient(75% 75% at 18% 85%, rgba(196, 152, 24, 0.24) 0%, transparent 58%),
+    linear-gradient(132deg, #17140A 0%, #0C0B09 42%, #1D180A 72%, #0B0B0D 100%);
+}
+.silk-stage::before {
+  content: '';
+  position: absolute;
+  inset: -25%;
+  background:
+    repeating-linear-gradient(
+      125deg,
+      rgba(242, 206, 22, 0.05) 0px,
+      rgba(255, 255, 255, 0.025) 28px,
+      transparent 70px,
+      rgba(242, 206, 22, 0.04) 115px
+    );
+  filter: blur(22px);
+  pointer-events: none;
+}
+
+/* Realistic dark titanium iPhone bezel inside Tabbed Showcase */
+.showcase-phone {
+  position: relative;
+  width: 100%;
+  max-width: 312px;
+  border-radius: 42px;
+  padding: 10px;
+  background: linear-gradient(160deg, #3A3A42 0%, #151519 42%, #2B2B32 100%);
+  box-shadow:
+    0 34px 70px -12px rgba(0, 0, 0, 0.88),
+    0 0 0 1px rgba(255, 255, 255, 0.14),
+    inset 0 1px 2px rgba(255, 255, 255, 0.22);
+}
+.showcase-phone-screen {
+  border-radius: 34px;
+  background: #0A0A0D;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* Integrations True 360° Rotating Orbital Arc (Fexiva Style) */
+.orbital-stage {
+  position: relative;
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  aspect-ratio: 2 / 1;
+  overflow: hidden;
+}
+.orbital-ambient {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(50% 75% at 50% 100%, rgba(242, 206, 22, 0.17) 0%, rgba(242, 206, 22, 0.045) 48%, transparent 76%);
+  pointer-events: none;
+}
+/* Horizon fade mask so orbiting nodes smoothly emerge on the left and dissolve on the right */
+.orbital-wheel-mask {
+  position: absolute;
+  inset: 0;
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, black 72%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 0%, black 72%, transparent 100%);
+}
+.orbital-wheel-center {
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  width: 76%;
+  aspect-ratio: 1 / 1;
+  transform: translate(-50%, -50%);
+}
+.orbital-wheel {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 1.5px solid rgba(242, 206, 22, 0.36);
+  box-shadow:
+    0 0 38px -10px rgba(242, 206, 22, 0.28),
+    inset 0 0 38px -14px rgba(242, 206, 22, 0.16);
+  animation: orbitSpin 42s linear infinite;
+  will-change: transform;
+}
+.orbital-outer-ring {
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  width: 90%;
+  aspect-ratio: 1 / 1;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 1px dashed rgba(242, 206, 22, 0.18);
+  pointer-events: none;
+  animation: orbitCounterSpin 90s linear infinite;
+}
+.orbital-inner-ring {
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  width: 54%;
+  aspect-ratio: 1 / 1;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 1px dashed rgba(242, 206, 22, 0.16);
+  pointer-events: none;
+}
+.orbital-wheel-mask:hover .orbital-wheel,
+.orbital-wheel-mask:hover .orbital-counter-spin,
+.orbital-wheel-mask:hover .orbital-outer-ring {
+  animation-play-state: paused;
+}
+.orbital-slot {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  z-index: 12;
+}
+.orbital-slot:hover {
+  z-index: 30;
+}
+.orbital-counter-spin {
+  animation: orbitCounterSpin 42s linear infinite;
+  will-change: transform;
+}
+@keyframes orbitSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes orbitCounterSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(-360deg); }
+}
+.orbital-node {
+  position: relative;
+  width: 76px;
+  height: 76px;
+  border-radius: 999px;
+  background: radial-gradient(circle at 35% 28%, #1E1E25 0%, #0D0D11 100%);
+  border: 1px solid rgba(242, 206, 22, 0.30);
+  box-shadow:
+    0 14px 34px rgba(0, 0, 0, 0.78),
+    inset 0 1px 1px rgba(255, 255, 255, 0.14),
+    0 0 28px -6px rgba(242, 206, 22, 0.28);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #F5F5F7;
+  transition: border-color 220ms ease, box-shadow 260ms ease, transform 240ms var(--ease-out-expo);
+  cursor: pointer;
+}
+.orbital-node:hover {
+  border-color: rgba(242, 206, 22, 0.85);
+  box-shadow:
+    0 16px 38px rgba(0, 0, 0, 0.88),
+    0 0 38px -2px rgba(242, 206, 22, 0.58);
+  transform: scale(1.1);
+}
+.orbital-node-tooltip {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  background: #18181D;
+  border: 1px solid rgba(242, 206, 22, 0.45);
+  color: #F5F5F7;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 11px;
+  border-radius: 999px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 180ms ease, transform 180ms var(--ease-out-expo);
+}
+.orbital-node:hover .orbital-node-tooltip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+.orbital-core {
+  background: radial-gradient(120% 120% at 50% 25%, rgba(242, 206, 22, 0.28) 0%, rgba(22, 20, 12, 0.96) 68%, #0C0C0E 100%);
+  border: 1px solid rgba(242, 206, 22, 0.5);
+  box-shadow:
+    0 0 58px -4px rgba(242, 206, 22, 0.4),
+    inset 0 1px 1px rgba(255, 255, 255, 0.24);
+}
+
+@media (max-width: 768px) {
+  .orbital-node {
+    width: 56px;
+    height: 56px;
+  }
+}
+@media (max-width: 520px) {
+  .orbital-node {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+/* Split-tile FAQ Accordion (Screenshot 6) */
+.faq-content {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 280ms var(--ease-out-expo);
+}
+.faq-item[data-open="true"] .faq-content {
+  grid-template-rows: 1fr;
+}
+.faq-plus {
+  transition: transform 280ms var(--ease-out-expo), color 200ms ease;
+}
+.faq-item[data-open="true"] .faq-plus {
+  transform: rotate(45deg);
+  color: #F2CE16;
+}
+.faq-item[data-open="true"] .faq-plus-box {
+  border-color: rgba(242, 206, 22, 0.45);
+  background-color: rgba(242, 206, 22, 0.08);
+}
+.faq-item[data-open="true"] .faq-card-main {
+  border-color: rgba(242, 206, 22, 0.28);
+}
+
+/* 3D Coin Seamless Blend */
+.coin-blend {
+  mix-blend-mode: lighten;
+  -webkit-mask-image: radial-gradient(circle at 50% 50%, black 58%, transparent 82%);
+  mask-image: radial-gradient(circle at 50% 50%, black 58%, transparent 82%);
+}
+
+/* Metallic card hover sheen */
+.metal-card {
+  position: relative;
+  overflow: hidden;
+  transform-style: preserve-3d;
+}
+.metal-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, transparent 30%, rgba(242, 206, 22, 0.14) 48%, rgba(255, 255, 255, 0.09) 52%, transparent 70%);
+  transform: translateX(-115%);
+  transition: transform 720ms var(--ease-out-expo);
+  pointer-events: none;
+}
+.metal-card:hover::after {
+  transform: translateX(115%);
+}
+
+.float-card {
+  transition: transform 280ms var(--ease-out-expo), border-color 220ms ease;
+}
+.float-card:hover {
+  border-color: rgba(242, 206, 22, 0.30);
+}
+
+/* Footer Horizon Glow */
+.footer-horizon {
+  position: relative;
+  overflow: hidden;
+}
+.footer-horizon::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(820px, 92%);
+  height: 150px;
+  background: radial-gradient(50% 70% at 50% 0%, rgba(242, 206, 22, 0.20) 0%, rgba(242, 206, 22, 0.05) 48%, transparent 100%);
+  pointer-events: none;
+}
+
+/* GSAP GPU hint */
+.gsap-gpu {
+  will-change: transform, opacity;
+}
+
+/* Sonner-style Toast */
+.toast-item {
+  animation: toastIn 240ms var(--ease-spring) both;
+}
+@keyframes toastIn {
+  from { opacity: 0; transform: translateY(10px) scale(0.96); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
