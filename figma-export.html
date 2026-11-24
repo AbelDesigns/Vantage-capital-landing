@@ -1,0 +1,1334 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vantage Capital — Landing Page (Static Figma Export)</title>
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Satoshi', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+          },
+          colors: {
+            obsidian: '#08080A',
+            surface: '#111114',
+            elevated: '#18181D',
+            subtle: '#222228',
+            vantage: '#F2CE16',
+            ink: '#F5F5F7',
+            muted: '#8E8E93',
+            faint: '#52525B',
+            gain: '#30D158',
+          },
+        },
+      },
+    };
+  </script>
+  <link rel="stylesheet" href="./styles.css" />
+  <style>
+    /* Static Figma Export Overrides: freeze all infinite motion, ensure 100% visibility */
+    *, *::before, *::after {
+      animation: none !important;
+      transition: none !important;
+    }
+    .marquee-track { transform: translate3d(0, 0, 0) !important; }
+    .orbital-wheel, .orbital-counter-spin { transform: none !important; }
+    #feature-tab-indicator { width: 25% !important; transform: translateX(0) !important; }
+    .static-slider-track {
+      position: relative;
+      width: 100%;
+      height: 4px;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.12);
+    }
+    .static-slider-fill {
+      height: 100%;
+      border-radius: 9999px;
+      background: #F2CE16;
+    }
+    .static-slider-thumb {
+      position: absolute;
+      top: 50%;
+      width: 18px;
+      height: 18px;
+      border-radius: 9999px;
+      background: #F2CE16;
+      border: 2.5px solid #08080A;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 12px rgba(242, 206, 22, 0.55);
+    }
+  </style>
+</head>
+<body class="bg-obsidian text-ink font-sans selection:bg-vantage selection:text-obsidian">
+
+  <!-- FLOATING PILL NAVBAR -->
+  <div class="relative z-40 px-3 sm:px-4 pt-3 pb-2">
+    <header class="nav-enter pointer-events-auto max-w-[1080px] mx-auto bg-surface/88 backdrop-blur-xl hairline-strong rounded-full px-3 sm:px-4 h-14 flex items-center justify-between gap-2 sm:gap-4 shadow-[0_12px_40px_rgba(0,0,0,0.55)]">
+      <!-- Brand -->
+      <a href="#top" class="flex items-center gap-2 pl-1.5 sm:pl-2 shrink-0">
+        <svg width="20" height="15" viewBox="0 0 221 167" fill="none" xmlns="http://www.w3.org/2000/svg" class="shrink-0">
+          <path d="M0 0L110.109 166.858L127.539 141.473L32.7384 0C32.7384 0 0 0.242599 0 0Z" fill="#F2CE16"/>
+          <path d="M110.109 101.493L127.545 76.2321L76.2324 0H43.2451L110.109 101.493Z" fill="#F2CE16"/>
+          <path d="M115.195 44.7073L131.611 69.3921L177.767 0.487793H145.029L115.195 44.7073Z" fill="#F2CE16"/>
+          <path d="M187.654 0L115.571 108.977L131.477 133.162L220.15 0H187.654Z" fill="#F2CE16"/>
+          <path d="M109.937 21.7641C116.101 21.7641 121.098 16.8921 121.098 10.8821C121.098 4.87207 116.101 0 109.937 0C103.773 0 98.7759 4.87207 98.7759 10.8821C98.7759 16.8921 103.773 21.7641 109.937 21.7641Z" fill="#F2CE16"/>
+        </svg>
+        <span class="text-[13px] sm:text-[14px] font-bold tracking-tight text-ink whitespace-nowrap">Vantage Capital</span>
+      </a>
+
+      <!-- Center Nav Links (Desktop) -->
+      <nav class="hidden md:flex items-center gap-6 text-[13px] font-medium text-muted" aria-label="Secciones">
+        <a href="#sobre" class="hover:text-ink transition-colors">Nosotros</a>
+        <a href="#plataforma" class="hover:text-ink transition-colors">Plataforma</a>
+        <a href="#integraciones" class="hover:text-ink transition-colors">Integraciones</a>
+        <a href="#planes" class="hover:text-ink transition-colors">Planes</a>
+        <a href="#blog" class="hover:text-ink transition-colors">Blog</a>
+        <a href="#faq" class="hover:text-ink transition-colors">FAQ</a>
+      </nav>
+
+      <!-- Right Pill Actions -->
+      <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
+        <button id="nav-demo-btn" class="hidden sm:inline-flex tactile items-center gap-1.5 px-3.5 py-2 rounded-full bg-obsidian/70 hairline hover:border-white/25 text-[12px] font-bold text-ink">
+          <i data-lucide="play" class="w-3 h-3 text-vantage fill-vantage"></i>
+          <span>Demo</span>
+        </button>
+        <button id="nav-access-btn" class="tactile px-3.5 sm:px-4 py-2 rounded-full bg-vantage text-obsidian text-[12px] font-bold hover:bg-[#f7d83b] whitespace-nowrap">
+          Abrir cuenta
+        </button>
+        <button id="mobile-menu-btn" type="button" aria-label="Abrir menú" aria-expanded="false" class="md:hidden tactile w-9 h-9 rounded-full bg-obsidian/80 hairline flex items-center justify-center text-ink">
+          <i id="mobile-menu-icon" data-lucide="menu" class="w-4 h-4"></i>
+        </button>
+      </div>
+    </header>
+  </div>
+
+  <!-- HERO: CENTERPIECE ARCHITECTURE -->
+  <section id="top" class="hero-ambience relative overflow-hidden pt-8 pb-14 sm:pt-12 sm:pb-16 lg:pt-14 lg:pb-24 border-b border-white/[0.06]">
+    <div class="max-w-[1200px] mx-auto px-4 sm:px-5 lg:px-8 flex flex-col items-center gap-8 sm:gap-10 lg:gap-12">
+
+      <!-- Centered Monumental Headline -->
+      <div class="flex flex-col items-center text-center gap-4 sm:gap-5 max-w-3xl">
+        <div class="hero-enter inline-flex items-center gap-2 px-3 sm:px-3.5 py-1.5 rounded-full bg-surface/90 hairline text-[11px] sm:text-[12px] font-medium text-muted">
+          <span class="w-1.5 h-1.5 rounded-full bg-vantage animate-pulse shrink-0"></span>
+          <span>Banca privada y tesorería · iOS, Android &amp; Web</span>
+        </div>
+
+        <h1 class="hero-headline text-[38px] sm:text-[62px] lg:text-[78px] font-bold tracking-[-0.04em] leading-[1.02] sm:leading-[0.98] text-ink">
+          Global access.<br />
+          <span class="text-vantage">Local intelligence.</span>
+        </h1>
+
+        <p class="hero-enter text-[15px] sm:text-[18px] text-muted leading-relaxed max-w-xl px-1">
+          Liquidez multi-divisa, rendimientos del Tesoro y transferencias institucionales sin spreads ocultos en una sola aplicación.
+        </p>
+
+        <div class="hero-enter w-full sm:w-auto flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 pt-1">
+          <button id="hero-access-btn" class="tactile w-full sm:w-auto justify-center px-6 py-3.5 rounded-full bg-vantage text-obsidian text-[14px] font-bold hover:bg-[#f7d83b] flex items-center gap-2 shadow-[0_0_28px_-6px_rgba(242,206,22,0.55)]">
+            <span>Solicitar acceso privado</span>
+            <i data-lucide="arrow-right" class="w-4 h-4 stroke-[2.25]"></i>
+          </button>
+          <button id="hero-demo-btn" class="tactile w-full sm:w-auto justify-center px-6 py-3.5 rounded-full bg-surface hairline hover:border-vantage/45 text-ink text-[14px] font-bold flex items-center gap-2">
+            <i data-lucide="play" class="w-3.5 h-3.5 text-vantage fill-vantage"></i>
+            <span>Ver demo interactiva</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- 3-Column Hero Stage -->
+      <div class="w-full grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6 items-center">
+
+        <!-- Left Floating Panels -->
+        <div class="hero-enter-left lg:col-span-4 flex flex-col gap-4 order-2 lg:order-1">
+          <div class="float-card bg-surface/90 backdrop-blur-md hairline-strong rounded-2xl p-4 sm:p-5 flex flex-col gap-4 shadow-2xl">
+            <div class="flex items-center justify-between gap-2">
+              <div class="flex items-center gap-2 min-w-0">
+                <span class="px-2 py-0.5 rounded-md bg-elevated hairline text-[11px] font-bold text-ink shrink-0">USD</span>
+                <span class="text-[12px] text-muted truncate">Treasury ••8841</span>
+              </div>
+              <span class="text-[11px] font-bold text-gain bg-gain/10 px-2 py-0.5 rounded-md tabular-nums shrink-0">4.85% APY</span>
+            </div>
+            <div class="flex flex-col gap-0.5 tabular-nums">
+              <span class="text-[26px] sm:text-[28px] font-bold text-ink tracking-tight leading-none">$324,500.00</span>
+              <span class="text-[12px] text-muted">Liquidez inmediata T+1</span>
+            </div>
+            <div class="grid grid-cols-2 gap-2 pt-2 border-t border-white/[0.06]">
+              <button id="float-deposit-btn" class="tactile py-2.5 rounded-xl bg-vantage text-obsidian text-[12px] font-bold text-center">Depositar</button>
+              <button id="float-send-btn" class="tactile py-2.5 rounded-xl bg-elevated hairline hover:border-white/20 text-ink text-[12px] font-bold text-center">Transferir</button>
+            </div>
+          </div>
+
+          <!-- Social Proof Mini Card -->
+          <div class="bg-surface/80 hairline rounded-2xl p-4 flex items-center justify-between gap-3">
+            <div class="flex items-center -space-x-2.5">
+              <div class="w-9 h-9 rounded-full bg-[#24242B] border-2 border-surface flex items-center justify-center text-[11px] font-bold text-ink">AM</div>
+              <div class="w-9 h-9 rounded-full bg-[#2E2A1A] border-2 border-surface flex items-center justify-center text-[11px] font-bold text-vantage">SR</div>
+              <div class="w-9 h-9 rounded-full bg-[#1E2B24] border-2 border-surface flex items-center justify-center text-[11px] font-bold text-gain">LC</div>
+              <div class="w-9 h-9 rounded-full bg-vantage border-2 border-surface flex items-center justify-center text-[10px] font-bold text-obsidian">+12k</div>
+            </div>
+            <div class="flex flex-col items-end text-right tabular-nums">
+              <div class="flex items-center gap-1 text-vantage text-[12px] font-bold">
+                <i data-lucide="star" class="w-3.5 h-3.5 fill-vantage"></i>
+                <span>4.9 / 5.0</span>
+              </div>
+              <span class="text-[11px] text-muted">iOS &amp; Android Finance</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- CENTERPIECE: Hand-Held Vantage Mobile Mockup -->
+        <div class="lg:col-span-4 flex justify-center items-end order-1 lg:order-2 relative">
+          <div id="hero-phone-parallax" class="hero-enter-phone relative w-full max-w-[270px] sm:max-w-[330px] lg:max-w-[360px] flex justify-center">
+            <img
+              src="./assets/hero-phone.png"
+              alt="Vantage Capital Mobile App Mockup"
+              class="w-full h-auto max-w-full block select-none pointer-events-none bg-transparent"
+              style="-webkit-mask-image: linear-gradient(to bottom, black 86%, transparent 100%); mask-image: linear-gradient(to bottom, black 86%, transparent 100%);"
+            />
+          </div>
+        </div>
+
+        <!-- Right Floating Panel: Live Global Transfer -->
+        <div class="hero-enter-right lg:col-span-4 flex flex-col gap-4 order-3">
+          <div class="float-card bg-surface/90 backdrop-blur-md hairline-strong rounded-2xl p-5 flex flex-col gap-3.5 shadow-2xl">
+            <div class="flex items-center justify-between">
+              <span class="text-[12px] font-bold text-ink">Global Transfer</span>
+              <span class="text-[11px] font-bold text-gain">Mid-Market 0%</span>
+            </div>
+
+            <div class="flex flex-col relative">
+              <div class="bg-obsidian hairline rounded-t-xl p-3.5 flex items-center justify-between gap-2">
+                <div class="flex flex-col min-w-0">
+                  <span class="text-[10px] text-muted">Envías</span>
+                  <input id="hero-send-input" type="number" value="25000" min="100" step="500" class="w-full bg-transparent text-[22px] font-bold text-ink tabular-nums focus:outline-none" />
+                </div>
+                <span id="hero-send-code" class="px-2.5 py-1 rounded-lg bg-elevated hairline text-[12px] font-bold text-ink shrink-0">USD</span>
+              </div>
+
+              <div class="relative h-0 flex items-center justify-center z-10">
+                <button id="hero-swap-btn" aria-label="Invertir divisas" class="swap-spin w-8 h-8 rounded-full bg-elevated hairline-strong hover:border-vantage/60 flex items-center justify-center text-vantage shadow-md">
+                  <i data-lucide="arrow-up-down" class="w-3.5 h-3.5"></i>
+                </button>
+              </div>
+
+              <div class="bg-obsidian hairline border-t-0 rounded-b-xl p-3.5 pt-4 flex items-center justify-between gap-2">
+                <div class="flex flex-col min-w-0">
+                  <span class="text-[10px] text-muted">Recibe (~15 seg)</span>
+                  <span id="hero-receive-out" class="text-[22px] font-bold text-vantage tabular-nums truncate">23,148.00</span>
+                </div>
+                <span id="hero-receive-code" class="px-2.5 py-1 rounded-lg bg-elevated hairline text-[12px] font-bold text-ink shrink-0">EUR</span>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between text-[11px] text-muted tabular-nums">
+              <span id="hero-rate-label">1 USD = 0.92592 EUR</span>
+              <span id="hero-savings-badge" class="text-gain font-bold">Ahorras +$700</span>
+            </div>
+          </div>
+
+          <div class="bg-surface/80 hairline rounded-2xl p-4 flex items-center justify-between gap-3">
+            <div class="flex items-center gap-2.5 min-w-0">
+              <span class="w-2 h-2 rounded-full bg-vantage shrink-0"></span>
+              <span class="text-[12px] text-ink/90 truncate"><span class="font-bold">Copilot:</span> +0.85% APY en liquidez</span>
+            </div>
+            <button id="float-copilot-btn" class="tactile text-[11px] font-bold text-vantage shrink-0 hover:underline">Simular →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- SECTION 1 (SCREENSHOT 1): TRUSTED BY RATING + SEAMLESS LOGO MARQUEE       -->
+  <!-- ========================================================================= -->
+  <section id="trusted" class="py-16 lg:py-20 border-b border-white/[0.06] overflow-hidden">
+    <div class="max-w-[1200px] mx-auto px-5 lg:px-8 flex flex-col items-center gap-8">
+      <p class="trusted-enter text-[15px] sm:text-[16px] font-medium text-ink/90 text-center tracking-[-0.01em]">
+        Respaldado por patrimonios y equipos financieros líderes
+      </p>
+
+      <!-- Avatar Stack + 4.9 Star Rating Block -->
+      <div class="trusted-enter flex flex-wrap items-center justify-center gap-6">
+        <div class="flex items-center -space-x-3">
+          <div class="w-11 h-11 rounded-full bg-gradient-to-br from-zinc-700 to-zinc-900 border-2 border-obsidian flex items-center justify-center text-[12px] font-bold text-ink shadow-lg">SN</div>
+          <div class="w-11 h-11 rounded-full bg-gradient-to-br from-amber-800/80 to-zinc-900 border-2 border-obsidian flex items-center justify-center text-[12px] font-bold text-amber-200 shadow-lg">AM</div>
+          <div class="w-11 h-11 rounded-full bg-gradient-to-br from-emerald-900/80 to-zinc-900 border-2 border-obsidian flex items-center justify-center text-[12px] font-bold text-emerald-200 shadow-lg">EV</div>
+          <div class="w-11 h-11 rounded-full bg-gradient-to-br from-slate-700 to-zinc-900 border-2 border-obsidian flex items-center justify-center text-[12px] font-bold text-slate-200 shadow-lg">DR</div>
+          <div class="w-11 h-11 rounded-full bg-vantage border-2 border-obsidian flex items-center justify-center text-[12px] font-black text-obsidian shadow-[0_0_20px_rgba(242,206,22,0.45)] tabular-nums">120k</div>
+        </div>
+
+        <div class="hidden sm:block w-px h-9 bg-white/15"></div>
+
+        <div class="flex flex-col items-center sm:items-start gap-1">
+          <div class="flex items-center gap-1 text-[#F59E0B]">
+            <i data-lucide="star" class="w-4 h-4 fill-[#F59E0B]"></i>
+            <i data-lucide="star" class="w-4 h-4 fill-[#F59E0B]"></i>
+            <i data-lucide="star" class="w-4 h-4 fill-[#F59E0B]"></i>
+            <i data-lucide="star" class="w-4 h-4 fill-[#F59E0B]"></i>
+            <i data-lucide="star" class="w-4 h-4 fill-[#F59E0B]"></i>
+          </div>
+          <span class="text-[14px] font-medium text-ink/85 tabular-nums">4.9 calificación promedio</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Seamless Infinite Institutional & Tech Logo Marquee -->
+    <div class="marquee-viewport mt-12 w-full max-w-[1380px] mx-auto">
+      <div id="logo-marquee-track" class="marquee-track py-3">
+        <!-- Group A -->
+        <div class="marquee-group">
+          <!-- Stripe -->
+          <div class="brand-logo">
+            <svg class="h-6 w-auto" viewBox="0 0 88 30" fill="currentColor" aria-label="Stripe">
+              <text x="0" y="23" font-family="Satoshi, -apple-system, sans-serif" font-weight="900" font-size="25" letter-spacing="-0.04em">stripe</text>
+            </svg>
+          </div>
+          <!-- J.P. Morgan -->
+          <div class="brand-logo">
+            <span class="text-[19px] font-semibold tracking-[0.04em]" style="font-family: Georgia, 'Times New Roman', serif;">J.P. Morgan</span>
+          </div>
+          <!-- Visa -->
+          <div class="brand-logo">
+            <svg class="h-5 w-auto" viewBox="0 0 72 24" fill="currentColor" aria-label="Visa">
+              <text x="0" y="20" font-family="Satoshi, -apple-system, sans-serif" font-weight="900" font-style="italic" font-size="24" letter-spacing="-0.03em">VISA</text>
+            </svg>
+          </div>
+          <!-- Mastercard -->
+          <div class="brand-logo">
+            <svg class="w-8 h-5 shrink-0" viewBox="0 0 36 22" fill="none" aria-hidden="true">
+              <circle cx="13" cy="11" r="9.5" fill="currentColor" opacity="0.52"/>
+              <circle cx="23" cy="11" r="9.5" fill="currentColor" opacity="0.88"/>
+            </svg>
+            <span class="text-[17px] font-bold tracking-[-0.02em]">mastercard</span>
+          </div>
+          <!-- Bloomberg -->
+          <div class="brand-logo">
+            <span class="text-[19px] font-black tracking-[-0.03em]">Bloomberg</span>
+          </div>
+          <!-- Goldman Sachs -->
+          <div class="brand-logo">
+            <span class="text-[18px] font-semibold tracking-[-0.01em]" style="font-family: Georgia, 'Times New Roman', serif;">Goldman Sachs</span>
+          </div>
+          <!-- Plaid -->
+          <div class="brand-logo">
+            <svg class="w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <rect x="3" y="3" width="7.5" height="7.5" rx="1.5"/>
+              <rect x="13.5" y="3" width="7.5" height="7.5" rx="1.5"/>
+              <rect x="3" y="13.5" width="7.5" height="7.5" rx="1.5"/>
+              <rect x="13.5" y="13.5" width="7.5" height="7.5" rx="1.5"/>
+            </svg>
+            <span class="text-[17px] font-extrabold tracking-[0.12em]">PLAID</span>
+          </div>
+          <!-- BlackRock -->
+          <div class="brand-logo">
+            <span class="text-[19px] font-black tracking-[-0.035em]">BlackRock</span>
+          </div>
+          <!-- Apple Pay -->
+          <div class="brand-logo">
+            <svg class="w-4 h-5 shrink-0" viewBox="0 0 18 22" fill="currentColor" aria-hidden="true">
+              <path d="M14.7 11.7c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9-.7 0-1.9-.8-3.1-.8-1.6 0-3 .9-3.8 2.4-1.6 2.8-.4 7 1.2 9.3.8 1.1 1.7 2.4 2.9 2.3 1.2 0 1.6-.7 3-.7 1.4 0 1.8.7 3.1.7 1.3 0 2.1-1.1 2.8-2.3.9-1.3 1.3-2.6 1.3-2.7-.1 0-2.5-1-2.5-3.8zM12.3 4.8c.6-.8 1.1-1.9 1-3-.9 0-2.1.6-2.7 1.4-.6.7-1.1 1.8-1 2.9 1.1.1 2.1-.5 2.7-1.3z"/>
+            </svg>
+            <span class="text-[18px] font-semibold tracking-[-0.02em]">Pay</span>
+          </div>
+          <!-- AWS -->
+          <div class="brand-logo">
+            <span class="text-[19px] font-black tracking-[-0.02em]">aws</span>
+            <svg class="w-5 h-3 -ml-1.5 mt-2 shrink-0" viewBox="0 0 24 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <path d="M2 3c5.5 5 13 5 18.5 1"/>
+              <path d="M18 1.5l3 2.3-1.8 3.2"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Group B (Exact Duplicate for Seamless Infinite Loop) -->
+        <div class="marquee-group" aria-hidden="true">
+          <div class="brand-logo">
+            <svg class="h-6 w-auto" viewBox="0 0 88 30" fill="currentColor">
+              <text x="0" y="23" font-family="Satoshi, -apple-system, sans-serif" font-weight="900" font-size="25" letter-spacing="-0.04em">stripe</text>
+            </svg>
+          </div>
+          <div class="brand-logo">
+            <span class="text-[19px] font-semibold tracking-[0.04em]" style="font-family: Georgia, 'Times New Roman', serif;">J.P. Morgan</span>
+          </div>
+          <div class="brand-logo">
+            <svg class="h-5 w-auto" viewBox="0 0 72 24" fill="currentColor">
+              <text x="0" y="20" font-family="Satoshi, -apple-system, sans-serif" font-weight="900" font-style="italic" font-size="24" letter-spacing="-0.03em">VISA</text>
+            </svg>
+          </div>
+          <div class="brand-logo">
+            <svg class="w-8 h-5 shrink-0" viewBox="0 0 36 22" fill="none">
+              <circle cx="13" cy="11" r="9.5" fill="currentColor" opacity="0.52"/>
+              <circle cx="23" cy="11" r="9.5" fill="currentColor" opacity="0.88"/>
+            </svg>
+            <span class="text-[17px] font-bold tracking-[-0.02em]">mastercard</span>
+          </div>
+          <div class="brand-logo">
+            <span class="text-[19px] font-black tracking-[-0.03em]">Bloomberg</span>
+          </div>
+          <div class="brand-logo">
+            <span class="text-[18px] font-semibold tracking-[-0.01em]" style="font-family: Georgia, 'Times New Roman', serif;">Goldman Sachs</span>
+          </div>
+          <div class="brand-logo">
+            <svg class="w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="7.5" height="7.5" rx="1.5"/>
+              <rect x="13.5" y="3" width="7.5" height="7.5" rx="1.5"/>
+              <rect x="3" y="13.5" width="7.5" height="7.5" rx="1.5"/>
+              <rect x="13.5" y="13.5" width="7.5" height="7.5" rx="1.5"/>
+            </svg>
+            <span class="text-[17px] font-extrabold tracking-[0.12em]">PLAID</span>
+          </div>
+          <div class="brand-logo">
+            <span class="text-[19px] font-black tracking-[-0.035em]">BlackRock</span>
+          </div>
+          <div class="brand-logo">
+            <svg class="w-4 h-5 shrink-0" viewBox="0 0 18 22" fill="currentColor">
+              <path d="M14.7 11.7c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9-.7 0-1.9-.8-3.1-.8-1.6 0-3 .9-3.8 2.4-1.6 2.8-.4 7 1.2 9.3.8 1.1 1.7 2.4 2.9 2.3 1.2 0 1.6-.7 3-.7 1.4 0 1.8.7 3.1.7 1.3 0 2.1-1.1 2.8-2.3.9-1.3 1.3-2.6 1.3-2.7-.1 0-2.5-1-2.5-3.8zM12.3 4.8c.6-.8 1.1-1.9 1-3-.9 0-2.1.6-2.7 1.4-.6.7-1.1 1.8-1 2.9 1.1.1 2.1-.5 2.7-1.3z"/>
+            </svg>
+            <span class="text-[18px] font-semibold tracking-[-0.02em]">Pay</span>
+          </div>
+          <div class="brand-logo">
+            <span class="text-[19px] font-black tracking-[-0.02em]">aws</span>
+            <svg class="w-5 h-3 -ml-1.5 mt-2 shrink-0" viewBox="0 0 24 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <path d="M2 3c5.5 5 13 5 18.5 1"/>
+              <path d="M18 1.5l3 2.3-1.8 3.2"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- SECTION 2 (SCREENSHOT 2): EDITORIAL ABOUT BENTO + MONUMENTAL STATS        -->
+  <!-- ========================================================================= -->
+  <section id="sobre" class="max-w-[1200px] mx-auto px-4 sm:px-5 lg:px-8 py-16 sm:py-24 lg:py-32 border-b border-white/[0.06]">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-10 items-start">
+
+      <!-- Left Editorial Column -->
+      <div class="lg:col-span-5 flex flex-col justify-between gap-8 sm:gap-10">
+        <div class="flex flex-col gap-4 sm:gap-5">
+          <div class="about-fade flex items-center gap-2.5">
+            <span class="eyebrow-dot"></span>
+            <span class="text-[12px] font-bold uppercase tracking-[0.16em] text-muted">Nosotros</span>
+          </div>
+
+          <h2 class="split-heading text-[32px] sm:text-[48px] lg:text-[52px] font-bold tracking-[-0.04em] leading-[1.06] sm:leading-[1.04] text-ink">
+            Creemos Que La Banca Debe Ser Sin Fricción
+          </h2>
+        </div>
+
+        <!-- Vertical Hairline + ESTD Badge Block -->
+        <div class="about-fade border-l border-white/15 pl-5 sm:pl-6 flex flex-col gap-4 sm:gap-5 my-1">
+          <div class="flex items-center gap-3.5">
+            <span class="bg-ink text-obsidian font-black text-[26px] sm:text-[32px] tracking-[-0.04em] px-3 py-1 leading-none rounded-[4px] tabular-nums">
+              2018
+            </span>
+            <span class="text-[13px] font-bold uppercase tracking-[0.2em] text-muted">ESTD.</span>
+          </div>
+
+          <p class="text-[14px] sm:text-[15px] text-muted leading-relaxed max-w-sm">
+            Acercamos infraestructura de tesorería institucional, cuentas multi-divisa y liquidaciones instantáneas a patrimonios globales y empresas de alto crecimiento sin burocracia bancaria.
+          </p>
+        </div>
+
+        <div class="about-fade pt-1">
+          <button id="about-cta-btn" class="btn-glow px-7 py-3.5 rounded-xl text-[14px] font-bold">
+            <span>Sobre nosotros</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Right Bento Visuals + Animated Counters Column -->
+      <div class="lg:col-span-7 flex flex-col gap-5 sm:gap-6">
+        <!-- Top Row: Editorial Photo 1 + $5B+ Counter -->
+        <div class="grid grid-cols-1 sm:grid-cols-12 gap-5 sm:gap-6 items-center">
+          <div class="sm:col-span-7 about-img-card img-reveal-wrap hairline aspect-[16/9.5] bg-surface">
+            <img
+              src="./assets/about-card-1.jpg"
+              alt="Miembro privado de Vantage Capital con tarjeta metálica"
+              class="w-full h-full object-cover object-[68%_22%]"
+            />
+          </div>
+
+          <div class="sm:col-span-5 flex flex-col gap-1 sm:pl-4 tabular-nums about-stat-block">
+            <span
+              data-count-to="5"
+              data-prefix="$"
+              data-suffix="B"
+              data-plus="true"
+              data-decimals="0"
+              class="count-metric text-[44px] sm:text-[62px] font-bold tracking-[-0.045em] text-ink leading-none"
+            >$5B<span class="text-vantage">+</span></span>
+            <span class="text-[13px] sm:text-[14px] font-medium text-muted">Transacciones globales</span>
+          </div>
+        </div>
+
+        <!-- Middle Wide Editorial Photo 2 -->
+        <div class="about-img-card img-reveal-wrap hairline aspect-[16/9] sm:aspect-[16/8.6] bg-surface">
+          <img
+            src="./assets/about-card-2.jpg"
+            alt="Pago contactless con smartphone y tarjeta metálica Vantage"
+            class="w-full h-full object-cover"
+          />
+        </div>
+
+        <!-- Bottom Row: 120+ Countries & 75+ Currencies -->
+        <div class="grid grid-cols-2 gap-4 sm:gap-6 pt-1 tabular-nums">
+          <div class="flex flex-col gap-1 about-stat-block">
+            <span
+              data-count-to="120"
+              data-prefix=""
+              data-suffix=""
+              data-plus="true"
+              data-decimals="0"
+              class="count-metric text-[40px] sm:text-[56px] font-bold tracking-[-0.045em] text-ink leading-none"
+            >120<span class="text-vantage">+</span></span>
+            <span class="text-[13px] sm:text-[14px] font-medium text-muted">Países soportados</span>
+          </div>
+
+          <div class="flex flex-col gap-1 about-stat-block">
+            <span
+              data-count-to="75"
+              data-prefix=""
+              data-suffix=""
+              data-plus="true"
+              data-decimals="0"
+              class="count-metric text-[40px] sm:text-[56px] font-bold tracking-[-0.045em] text-ink leading-none"
+            >75<span class="text-vantage">+</span></span>
+            <span class="text-[13px] sm:text-[14px] font-medium text-muted">Divisas soportadas</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- SECTION 3 (SCREENSHOT 3): INTERACTIVE 4-TAB FEATURE SHOWCASE + MOCKUP     -->
+  <!-- ========================================================================= -->
+  <section id="plataforma" class="max-w-[1200px] mx-auto px-4 sm:px-5 lg:px-8 py-16 sm:py-24 lg:py-32 border-b border-white/[0.06]">
+    <!-- Top 4-Tab Bar (Mobile: 2x2 Clean Pill Grid | Desktop: 4-Col Bar + Sliding Gold Underline) -->
+    <div id="feature-tabs-bar" class="relative grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-0 md:border-b md:border-white/[0.10] mb-10 md:mb-16">
+      <button data-feature-tab="budgeting" class="feature-tab-btn is-active px-3 py-3 md:py-4 rounded-xl md:rounded-none text-center text-[13px] sm:text-[14px] md:text-[15px] font-bold text-ink">
+        Tesorería inteligente
+      </button>
+      <button data-feature-tab="swapping" class="feature-tab-btn px-3 py-3 md:py-4 rounded-xl md:rounded-none text-center text-[13px] sm:text-[14px] md:text-[15px] font-medium text-muted hover:text-ink">
+        Cambio instantáneo
+      </button>
+      <button data-feature-tab="cards" class="feature-tab-btn px-3 py-3 md:py-4 rounded-xl md:rounded-none text-center text-[13px] sm:text-[14px] md:text-[15px] font-medium text-muted hover:text-ink">
+        Tarjetas virtuales
+      </button>
+      <button data-feature-tab="history" class="feature-tab-btn px-3 py-3 md:py-4 rounded-xl md:rounded-none text-center text-[13px] sm:text-[14px] md:text-[15px] font-medium text-muted hover:text-ink">
+        Historial y auditoría
+      </button>
+      <div id="feature-tab-indicator" class="feature-tab-indicator hidden md:block"></div>
+    </div>
+
+    <!-- 2-Column Content & Silk-Lit iPhone Mockup -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+      <!-- Left Copy + Dual Mini-Features -->
+      <div id="feature-tab-copy" class="lg:col-span-5 flex flex-col justify-between gap-8 sm:gap-12">
+        <div class="flex flex-col gap-4 sm:gap-5">
+          <h2 id="ft-title" class="text-[30px] sm:text-[44px] font-bold tracking-[-0.035em] leading-[1.08] sm:leading-[1.06] text-ink">
+            Rendimiento Intuitivo Que Alinea Tus Metas
+          </h2>
+          <p id="ft-desc" class="text-[14px] sm:text-[15px] text-muted leading-relaxed">
+            Gestiona liquidez, asigna presupuestos por entidad y desbloquea claridad financiera en un solo lugar. Los saldos y rendimientos se actualizan en tiempo real.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-1">
+          <div class="flex flex-col gap-2.5 pr-2">
+            <div class="w-9 h-9 rounded-xl bg-vantage/10 hairline-gold flex items-center justify-center text-vantage">
+              <i id="ft-icon-1" data-lucide="smartphone" class="w-4 h-4"></i>
+            </div>
+            <h3 id="ft-sub-1" class="text-[15px] sm:text-[16px] font-bold text-ink">Onboarding ágil</h3>
+            <p id="ft-subdesc-1" class="text-[13px] text-muted leading-relaxed">
+              Configura cuentas multi-divisa en minutos sin integraciones complejas y suma a tu equipo financiero al instante.
+            </p>
+          </div>
+
+          <div class="flex flex-col gap-2.5 pt-5 border-t border-white/[0.08] sm:pt-0 sm:border-t-0 sm:border-l sm:border-white/[0.08] sm:pl-6">
+            <div class="w-9 h-9 rounded-xl bg-vantage/10 hairline-gold flex items-center justify-center text-vantage">
+              <i id="ft-icon-2" data-lucide="network" class="w-4 h-4"></i>
+            </div>
+            <h3 id="ft-sub-2" class="text-[15px] sm:text-[16px] font-bold text-ink">Control en tiempo real</h3>
+            <p id="ft-subdesc-2" class="text-[13px] text-muted leading-relaxed">
+              Define límites dinámicos por tarjeta, aprueba transferencias al toque y mantén cada presupuesto bajo llave.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Silk-Lit Phone Mockup Stage -->
+      <div class="lg:col-span-7">
+        <div class="silk-stage hairline-strong rounded-2xl sm:rounded-[28px] px-4 py-7 sm:p-12 flex items-center justify-center min-h-[470px] sm:min-h-[580px] shadow-2xl">
+          <div id="showcase-phone-frame" class="showcase-phone">
+            <div id="showcase-phone-screen" class="showcase-phone-screen p-3.5 sm:p-4 pb-5 min-h-[410px] flex flex-col gap-3.5 sm:gap-4">
+              <div class="flex items-center justify-between text-[10px] text-ink/80 font-semibold px-1 pt-0.5 tabular-nums">
+                <span>9:41</span>
+                <div class="w-16 h-4 rounded-full bg-black border border-white/10"></div>
+                <div class="flex items-center gap-1"><span>5G</span><span class="w-4 h-2 rounded-[2px] border border-white/60 inline-block bg-vantage"></span></div>
+              </div>
+              <div class="flex items-center justify-between pt-2">
+                <div>
+                  <p class="text-[11px] text-muted">Buenos días,</p>
+                  <p class="text-[17px] font-bold text-ink tracking-tight">Alejandro <span class="text-vantage">✦</span></p>
+                </div>
+                <div class="w-8 h-8 rounded-full bg-surface hairline flex items-center justify-center relative">
+                  <i data-lucide="bell" class="w-3.5 h-3.5 text-ink/80"></i>
+                  <span class="w-1.5 h-1.5 rounded-full bg-vantage absolute top-1.5 right-1.5"></span>
+                </div>
+              </div>
+              <div class="bg-surface/90 hairline rounded-xl px-3 py-2 flex items-center gap-2 text-[11px] text-muted">
+                <i data-lucide="search" class="w-3.5 h-3.5"></i>
+                <span>Buscar movimientos...</span>
+              </div>
+              <div class="flex items-center justify-between text-[11px] pt-1">
+                <span class="font-bold text-ink">Cuentas</span>
+                <span class="text-vantage font-medium">Ver todo</span>
+              </div>
+              <div class="rounded-2xl p-4 border border-vantage/35 bg-gradient-to-br from-[#2B240E] via-[#15130C] to-[#0C0C0E] flex flex-col gap-3">
+                <div class="flex items-center justify-between">
+                  <div>
+                    <span class="text-[10px] text-ink/70">Balance total</span>
+                    <div class="text-[22px] font-bold text-ink tabular-nums tracking-tight">$842,910.45</div>
+                    <span class="text-[10px] text-gain font-bold tabular-nums">↑ 8.3% respecto al mes pasado</span>
+                  </div>
+                  <div class="w-8 h-8 rounded-xl bg-vantage/15 border border-vantage/35 flex items-center justify-center text-vantage">
+                    <i data-lucide="wallet" class="w-4 h-4"></i>
+                  </div>
+                </div>
+                <div class="grid grid-cols-4 gap-1.5 pt-2 border-t border-white/10 text-center text-[9px] text-ink/80">
+                  <div class="bg-obsidian/60 rounded-lg py-1.5 flex flex-col items-center gap-1"><i data-lucide="send" class="w-3 h-3 text-vantage"></i><span>Enviar</span></div>
+                  <div class="bg-obsidian/60 rounded-lg py-1.5 flex flex-col items-center gap-1"><i data-lucide="download" class="w-3 h-3 text-vantage"></i><span>Recibir</span></div>
+                  <div class="bg-obsidian/60 rounded-lg py-1.5 flex flex-col items-center gap-1"><i data-lucide="repeat" class="w-3 h-3 text-vantage"></i><span>Cambio</span></div>
+                  <div class="bg-obsidian/60 rounded-lg py-1.5 flex flex-col items-center gap-1"><i data-lucide="more-horizontal" class="w-3 h-3 text-vantage"></i><span>Más</span></div>
+                </div>
+              </div>
+              <div class="flex flex-col gap-2 pt-1">
+                <div class="flex items-center justify-between text-[11px]">
+                  <span class="font-bold text-ink">Recientes</span>
+                  <span class="text-vantage">Ver todo</span>
+                </div>
+                <div class="bg-surface/80 hairline rounded-xl p-2.5 flex items-center justify-between text-[11px] tabular-nums">
+                  <div class="flex items-center gap-2.5">
+                    <div class="w-7 h-7 rounded-lg bg-vantage/15 text-vantage flex items-center justify-center"><i data-lucide="landmark" class="w-3.5 h-3.5"></i></div>
+                    <div><div class="font-bold text-ink">US Treasury SGOV</div><div class="text-[9px] text-muted">Hoy · 09:12</div></div>
+                  </div>
+                  <span class="text-gain font-bold">+$1,310.00</span>
+                </div>
+                <div class="bg-surface/80 hairline rounded-xl p-2.5 flex items-center justify-between text-[11px] tabular-nums">
+                  <div class="flex items-center gap-2.5">
+                    <div class="w-7 h-7 rounded-lg bg-elevated text-ink flex items-center justify-center"><i data-lucide="globe" class="w-3.5 h-3.5"></i></div>
+                    <div><div class="font-bold text-ink">SEPA Instant · Madrid</div><div class="text-[9px] text-muted">Ayer · 18:40</div></div>
+                  </div>
+                  <span class="text-ink font-bold">-€4,250.00</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTERACTIVE YIELD SIMULATOR + INFINITE METAL CARD + FX SAVINGS CALCULATOR -->
+  <section id="funciones" class="max-w-[1200px] mx-auto px-4 sm:px-5 lg:px-8 py-16 sm:py-24 lg:py-28 flex flex-col gap-10 sm:gap-12 border-b border-white/[0.06]">
+    <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-4">
+      <div class="flex flex-col gap-3 max-w-2xl">
+        <div class="flex items-center gap-2.5">
+          <span class="eyebrow-dot"></span>
+          <span class="text-[12px] font-bold uppercase tracking-[0.16em] text-muted">Ecosistema Cuantitativo</span>
+        </div>
+        <h2 class="split-heading text-[30px] sm:text-[46px] font-bold tracking-[-0.035em] leading-[1.08] sm:leading-[1.06] text-ink">
+          Cada módulo diseñado para decidir más rápido.
+        </h2>
+      </div>
+      <button id="section-demo-btn" class="tactile self-start lg:self-auto px-5 py-2.5 rounded-full bg-surface hairline hover:border-vantage/45 text-[13px] font-bold text-ink flex items-center gap-2">
+        <i data-lucide="play" class="w-3.5 h-3.5 text-vantage fill-vantage"></i>
+        <span>Explorar demo completa</span>
+      </button>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
+      <!-- Interactive Treasury Yield Simulator (7 cols) -->
+      <div class="bento-reveal lg:col-span-7 bg-surface hairline rounded-3xl p-5 sm:p-8 flex flex-col justify-between gap-6 sm:gap-8">
+        <div class="flex flex-col gap-2">
+          <span class="text-[12px] font-bold text-vantage">Tesorería Activa</span>
+          <h3 class="text-[22px] sm:text-[24px] font-bold tracking-tight text-ink">Haz crecer tu liquidez sin bloquearla.</h3>
+          <p class="text-[14px] text-muted max-w-lg">Selecciona divisa y monto para calcular tu rendimiento anual estimado en cuentas segregadas.</p>
+        </div>
+
+        <div class="bg-obsidian hairline rounded-2xl p-4 sm:p-5 flex flex-col gap-5">
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <div class="flex flex-wrap items-center gap-1.5">
+              <button data-yield-cur="USD" class="yield-cur-btn tactile px-3 py-1.5 rounded-full text-[11px] sm:text-[12px] font-bold bg-elevated text-ink hairline-gold">USD · 4.85%</button>
+              <button data-yield-cur="EUR" class="yield-cur-btn tactile px-3 py-1.5 rounded-full text-[11px] sm:text-[12px] font-medium bg-surface text-muted hairline">EUR · 3.40%</button>
+              <button data-yield-cur="GBP" class="yield-cur-btn tactile px-3 py-1.5 rounded-full text-[11px] sm:text-[12px] font-medium bg-surface text-muted hairline">GBP · 4.60%</button>
+            </div>
+            <span class="text-[11px] text-muted">Liquidez T+1</span>
+          </div>
+
+          <div class="flex flex-col gap-2">
+            <div class="flex justify-between text-[13px] tabular-nums">
+              <span class="text-muted">Liquidez asignada</span>
+              <span id="yield-principal-out" class="font-bold text-ink text-[15px] sm:text-[16px]">$500,000</span>
+            </div>
+            <div class="py-2"><div class="static-slider-track"><div class="static-slider-fill" style="width: 10%;"></div><div class="static-slider-thumb" style="left: 10%;"></div></div></div>
+          </div>
+
+          <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-2 pt-3 border-t border-white/[0.06] tabular-nums">
+            <div class="flex flex-col">
+              <span class="text-[11px] uppercase tracking-wider text-muted">Rendimiento anual</span>
+              <span id="yield-annual-out" class="text-[24px] sm:text-[28px] font-bold text-vantage">+$24,250 / año</span>
+            </div>
+            <span id="yield-monthly-out" class="text-[13px] text-gain font-bold">+$2,021 / mes</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Vantage Infinite Metal Card (5 cols) -->
+      <div class="bento-reveal lg:col-span-5 bg-surface hairline rounded-3xl p-5 sm:p-8 flex flex-col justify-between gap-6 sm:gap-8" style="perspective: 900px;">
+        <div class="flex flex-col gap-2">
+          <span class="text-[12px] font-bold text-vantage">Vantage Infinite</span>
+          <h3 class="text-[22px] sm:text-[24px] font-bold tracking-tight text-ink">Metal negro, cero FX en 140+ países.</h3>
+          <p class="text-[14px] text-muted">Límites ajustables en tiempo real, tarjetas virtuales desechables y congelamiento de un toque.</p>
+        </div>
+
+        <div class="metal-card rounded-2xl p-5 sm:p-6 aspect-[1.6/1] bg-gradient-to-br from-[#1E1E24] via-[#111115] to-[#08080A] hairline-strong flex flex-col justify-between shadow-xl">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <svg width="16" height="12" viewBox="0 0 221 167" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 0L110.109 166.858L127.539 141.473L32.7384 0C32.7384 0 0 0.242599 0 0Z" fill="#F2CE16"/>
+                <path d="M110.109 101.493L127.545 76.2321L76.2324 0H43.2451L110.109 101.493Z" fill="#F2CE16"/>
+                <path d="M115.195 44.7073L131.611 69.3921L177.767 0.487793H145.029L115.195 44.7073Z" fill="#F2CE16"/>
+                <path d="M187.654 0L115.571 108.977L131.477 133.162L220.15 0H187.654Z" fill="#F2CE16"/>
+                <path d="M109.937 21.7641C116.101 21.7641 121.098 16.8921 121.098 10.8821C121.098 4.87207 116.101 0 109.937 0C103.773 0 98.7759 4.87207 98.7759 10.8821C98.7759 16.8921 103.773 21.7641 109.937 21.7641Z" fill="#F2CE16"/>
+              </svg>
+              <span class="text-[12px] font-bold text-ink">Vantage Infinite</span>
+            </div>
+            <span class="text-[10px] uppercase tracking-widest text-vantage font-bold">0% FX</span>
+          </div>
+          <div class="text-[15px] sm:text-[17px] tracking-[0.12em] sm:tracking-[0.16em] text-ink/90 font-medium tabular-nums whitespace-nowrap">••••  ••••  ••••  4092</div>
+          <div class="flex justify-between text-[11px] text-muted tabular-nums">
+            <span>PRIVATE WEALTH</span>
+            <span>09/29</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- FX Savings Calculator (12 cols) -->
+      <div id="calculadora" class="bento-reveal lg:col-span-12 bg-surface hairline rounded-3xl p-5 sm:p-8 grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center">
+        <div class="lg:col-span-5 flex flex-col gap-2">
+          <span class="text-[12px] font-bold text-vantage">Calculadora de Ahorro FX</span>
+          <h3 class="text-[22px] sm:text-[26px] font-bold tracking-tight text-ink">Compara Vantage contra tu banco tradicional.</h3>
+          <p class="text-[14px] text-muted leading-relaxed">
+            Mientras la banca tradicional aplica un spread promedio del 2.8% en transferencias internacionales, Vantage opera a tasa mid-market real.
+          </p>
+        </div>
+
+        <div class="lg:col-span-7 bg-obsidian hairline rounded-2xl p-4 sm:p-5 flex flex-col gap-5">
+          <div class="flex flex-col gap-2">
+            <div class="flex justify-between gap-2 text-[13px] tabular-nums">
+              <span class="text-muted">Volumen mensual</span>
+              <span id="fx-vol-out" class="font-bold text-ink text-[15px] sm:text-[16px]">$100,000 / mes</span>
+            </div>
+            <div class="py-2"><div class="static-slider-track"><div class="static-slider-fill" style="width: 19%;"></div><div class="static-slider-thumb" style="left: 19%;"></div></div></div>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 tabular-nums">
+            <div class="bg-surface hairline rounded-xl p-4 flex flex-col gap-1">
+              <span class="text-[11px] uppercase tracking-wider text-muted">Comisión oculta bancaria (2.8%)</span>
+              <span id="fx-bank-cost" class="text-[20px] sm:text-[22px] font-bold text-muted line-through">$33,600 / año</span>
+            </div>
+            <div class="bg-surface hairline-gold rounded-xl p-4 flex flex-col gap-1">
+              <span class="text-[11px] uppercase tracking-wider text-vantage">Ahorro neto con Vantage</span>
+              <span id="fx-vantage-save" class="text-[20px] sm:text-[22px] font-bold text-gain">+$33,600 / año</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- SECTION 4 (SCREENSHOT 4): INTEGRATIONS ORBITAL ARC                        -->
+  <!-- ========================================================================= -->
+  <section id="integraciones" class="relative overflow-hidden pt-16 sm:pt-24 lg:pt-32 pb-0 border-b border-white/[0.06]">
+    <div class="max-w-[1200px] mx-auto px-4 sm:px-5 lg:px-8 flex flex-col items-center text-center gap-4 sm:gap-5">
+      <div class="integ-fade flex items-center gap-2.5">
+        <span class="eyebrow-dot"></span>
+        <span class="text-[12px] font-bold uppercase tracking-[0.16em] text-muted">Integraciones</span>
+      </div>
+
+      <h2 class="split-heading text-[30px] sm:text-[50px] font-bold tracking-[-0.04em] leading-[1.08] sm:leading-[1.05] text-ink max-w-2xl">
+        Se Conecta Con Las Herramientas Que Ya Usas
+      </h2>
+    </div>
+
+    <!-- Orbital Rotating 360° Ring Stage (Fexiva Style) -->
+    <div class="orbital-stage mt-10">
+      <div class="orbital-ambient"></div>
+
+      <!-- Masked Rotating Orbital System (emerges cleanly on left horizon, dissolves on right) -->
+      <div class="orbital-wheel-mask">
+        <div class="orbital-outer-ring"></div>
+        <div class="orbital-inner-ring"></div>
+
+        <div class="orbital-wheel-center">
+          <div class="orbital-wheel">
+            <!-- 12 Recognizable Tech & Banking Logos spaced every 30° on the 360° ring -->
+
+            <!-- 210° (Left-lower) — Stripe -->
+            <div class="orbital-slot" style="left: 6.70%; top: 25%;">
+              <div class="orbital-counter-spin">
+                <div class="orbital-node" data-integration="Stripe">
+                  <span class="orbital-node-tooltip">Stripe</span>
+                  <span class="text-[24px] sm:text-[30px] font-black tracking-tight leading-none text-ink">S</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 240° (Upper-left) — Apple Pay -->
+            <div class="orbital-slot" style="left: 25%; top: 6.70%;">
+              <div class="orbital-counter-spin">
+                <div class="orbital-node" data-integration="Apple Pay">
+                  <span class="orbital-node-tooltip">Apple Pay</span>
+                  <svg class="w-5 h-5 sm:w-7 sm:h-7" viewBox="0 0 18 22" fill="currentColor" aria-label="Apple">
+                    <path d="M14.7 11.7c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9-.7 0-1.9-.8-3.1-.8-1.6 0-3 .9-3.8 2.4-1.6 2.8-.4 7 1.2 9.3.8 1.1 1.7 2.4 2.9 2.3 1.2 0 1.6-.7 3-.7 1.4 0 1.8.7 3.1.7 1.3 0 2.1-1.1 2.8-2.3.9-1.3 1.3-2.6 1.3-2.7-.1 0-2.5-1-2.5-3.8zM12.3 4.8c.6-.8 1.1-1.9 1-3-.9 0-2.1.6-2.7 1.4-.6.7-1.1 1.8-1 2.9 1.1.1 2.1-.5 2.7-1.3z"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- 270° (Top apex) — Mastercard -->
+            <div class="orbital-slot" style="left: 50%; top: 0%;">
+              <div class="orbital-counter-spin">
+                <div class="orbital-node" data-integration="Mastercard">
+                  <span class="orbital-node-tooltip">Mastercard</span>
+                  <svg class="w-8 h-5 sm:w-11 sm:h-7" viewBox="0 0 40 24" fill="none" aria-label="Mastercard">
+                    <circle cx="14.5" cy="12" r="9.5" fill="#F2CE16" opacity="0.9"/>
+                    <circle cx="25.5" cy="12" r="9.5" fill="#F5F5F7" opacity="0.72"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- 300° (Upper-right) — Visa -->
+            <div class="orbital-slot" style="left: 75%; top: 6.70%;">
+              <div class="orbital-counter-spin">
+                <div class="orbital-node" data-integration="Visa">
+                  <span class="orbital-node-tooltip">Visa</span>
+                  <span class="text-[13px] sm:text-[18px] font-black italic tracking-[-0.04em] text-ink">VISA</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 330° (Right-lower) — Plaid -->
+            <div class="orbital-slot" style="left: 93.30%; top: 25%;">
+              <div class="orbital-counter-spin">
+                <div class="orbital-node" data-integration="Plaid">
+                  <span class="orbital-node-tooltip">Plaid</span>
+                  <svg class="w-5 h-5 sm:w-7 sm:h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-label="Plaid">
+                    <rect x="3" y="3" width="7.5" height="7.5" rx="1.5"/>
+                    <rect x="13.5" y="3" width="7.5" height="7.5" rx="1.5"/>
+                    <rect x="3" y="13.5" width="7.5" height="7.5" rx="1.5"/>
+                    <rect x="13.5" y="13.5" width="7.5" height="7.5" rx="1.5"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- 0° (Right horizon) — J.P. Morgan -->
+            <div class="orbital-slot" style="left: 100%; top: 50%;">
+              <div class="orbital-counter-spin">
+                <div class="orbital-node" data-integration="J.P. Morgan">
+                  <span class="orbital-node-tooltip">J.P. Morgan</span>
+                  <span class="text-[12px] sm:text-[16px] font-bold tracking-[0.04em] text-ink" style="font-family: Georgia, 'Times New Roman', serif;">JPM</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 30° — AWS -->
+            <div class="orbital-slot" style="left: 93.30%; top: 75%;">
+              <div class="orbital-counter-spin">
+                <div class="orbital-node" data-integration="AWS Cloud">
+                  <span class="orbital-node-tooltip">AWS Cloud</span>
+                  <div class="flex flex-col items-center leading-none">
+                    <span class="text-[12px] sm:text-[16px] font-black tracking-[-0.03em] text-ink">aws</span>
+                    <svg class="w-6 h-2 mt-0.5 text-vantage" viewBox="0 0 28 10" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+                      <path d="M2 2.5c7 5 16 5 22 1"/>
+                      <path d="M21 1l3.2 2.4-2 3.2"/>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 60° — Goldman Sachs -->
+            <div class="orbital-slot" style="left: 75%; top: 93.30%;">
+              <div class="orbital-counter-spin">
+                <div class="orbital-node" data-integration="Goldman Sachs">
+                  <span class="orbital-node-tooltip">Goldman Sachs</span>
+                  <span class="text-[15px] sm:text-[19px] font-bold tracking-tight text-ink" style="font-family: Georgia, 'Times New Roman', serif;">GS</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 90° — Bloomberg -->
+            <div class="orbital-slot" style="left: 50%; top: 100%;">
+              <div class="orbital-counter-spin">
+                <div class="orbital-node" data-integration="Bloomberg Terminal">
+                  <span class="orbital-node-tooltip">Bloomberg</span>
+                  <span class="text-[22px] sm:text-[26px] font-black tracking-tighter text-ink">B<span class="text-vantage">.</span></span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 120° — PayPal -->
+            <div class="orbital-slot" style="left: 25%; top: 93.30%;">
+              <div class="orbital-counter-spin">
+                <div class="orbital-node" data-integration="PayPal">
+                  <span class="orbital-node-tooltip">PayPal</span>
+                  <span class="text-[18px] sm:text-[22px] font-black italic tracking-[-0.08em] text-ink">P<span class="text-vantage">P</span></span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 150° — Slack -->
+            <div class="orbital-slot" style="left: 6.70%; top: 75%;">
+              <div class="orbital-counter-spin">
+                <div class="orbital-node" data-integration="Slack">
+                  <span class="orbital-node-tooltip">Slack</span>
+                  <svg class="w-5 h-5 sm:w-7 sm:h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-label="Slack">
+                    <path d="M9 4v16M15 4v16M4 9h16M4 15h16"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- 180° (Left horizon) — BlackRock -->
+            <div class="orbital-slot" style="left: 0%; top: 50%;">
+              <div class="orbital-counter-spin">
+                <div class="orbital-node" data-integration="BlackRock">
+                  <span class="orbital-node-tooltip">BlackRock</span>
+                  <span class="text-[15px] sm:text-[18px] font-black tracking-[-0.04em] text-ink">BLK</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Central Glowing Vantage Emblem Tile + Caption (always crisp above mask) -->
+      <div class="orbital-core-wrap absolute left-1/2 bottom-5 sm:bottom-12 -translate-x-1/2 flex flex-col items-center gap-2.5 sm:gap-4 text-center z-20">
+        <div class="orbital-core w-14 h-14 sm:w-[90px] sm:h-[90px] rounded-2xl sm:rounded-[22px] flex items-center justify-center">
+          <svg class="w-6 h-5 sm:w-9 sm:h-7" viewBox="0 0 221 167" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 0L110.109 166.858L127.539 141.473L32.7384 0C32.7384 0 0 0.242599 0 0Z" fill="#F2CE16"/>
+            <path d="M110.109 101.493L127.545 76.2321L76.2324 0H43.2451L110.109 101.493Z" fill="#F2CE16"/>
+            <path d="M115.195 44.7073L131.611 69.3921L177.767 0.487793H145.029L115.195 44.7073Z" fill="#F2CE16"/>
+            <path d="M187.654 0L115.571 108.977L131.477 133.162L220.15 0H187.654Z" fill="#F2CE16"/>
+            <path d="M109.937 21.7641C116.101 21.7641 121.098 16.8921 121.098 10.8821C121.098 4.87207 116.101 0 109.937 0C103.773 0 98.7759 4.87207 98.7759 10.8821C98.7759 16.8921 103.773 21.7641 109.937 21.7641Z" fill="#F2CE16"/>
+          </svg>
+        </div>
+        <p class="text-[12px] sm:text-[15px] font-medium text-ink/90 leading-snug max-w-[210px] sm:max-w-[240px]">
+          100+ integraciones disponibles<br />y en crecimiento
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRANSPARENT PLANS / TIERS -->
+  <section id="planes" class="bg-surface/30 py-16 sm:py-24 lg:py-28 border-b border-white/[0.06]">
+    <div class="max-w-[1200px] mx-auto px-4 sm:px-5 lg:px-8 flex flex-col gap-10 sm:gap-12">
+      <div class="flex flex-col items-center text-center gap-3 max-w-xl mx-auto">
+        <div class="flex items-center gap-2.5">
+          <span class="eyebrow-dot"></span>
+          <span class="text-[12px] font-bold uppercase tracking-[0.16em] text-muted">Membresías</span>
+        </div>
+        <h2 class="split-heading text-[30px] sm:text-[44px] font-bold tracking-[-0.035em] leading-[1.08] sm:leading-[1.06] text-ink">
+          Precios transparentes, cero letras pequeñas.
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto w-full">
+        <!-- Private Wealth -->
+        <div class="plan-card bg-obsidian hairline rounded-3xl p-7 flex flex-col justify-between gap-8 hover:border-white/20 transition-colors">
+          <div class="flex flex-col gap-5">
+            <div class="flex items-center justify-between">
+              <span class="text-[16px] font-bold text-ink">Private Wealth</span>
+              <span class="text-[11px] font-bold text-muted bg-surface hairline px-2.5 py-1 rounded-full">Individual</span>
+            </div>
+            <div class="flex items-baseline gap-1.5 tabular-nums">
+              <span class="text-[40px] font-bold text-ink">$0</span>
+              <span class="text-[13px] text-muted">/ mes · cuentas desde $50k</span>
+            </div>
+            <div class="flex flex-col gap-3 text-[13px] text-muted pt-4 border-t border-white/[0.06]">
+              <div class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-vantage shrink-0"></i><span>Cuentas locales en USD, EUR, GBP y USDC</span></div>
+              <div class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-vantage shrink-0"></i><span>Transferencias FedNow / SEPA a tasa mid-market 0%</span></div>
+              <div class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-vantage shrink-0"></i><span>Tarjeta metálica Vantage Infinite incluida</span></div>
+              <div class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-vantage shrink-0"></i><span>Acceso completo a Vantage Copilot AI</span></div>
+            </div>
+          </div>
+          <button data-plan="Private Wealth" class="plan-cta-btn tactile w-full py-3.5 rounded-full bg-surface hairline hover:border-white/25 text-ink font-bold text-[13px]">
+            Solicitar Private Wealth
+          </button>
+        </div>
+
+        <!-- Corporate Treasury -->
+        <div class="plan-card bg-surface hairline-gold rounded-3xl p-7 flex flex-col justify-between gap-8 shadow-[0_0_50px_-24px_rgba(242,206,22,0.35)]">
+          <div class="flex flex-col gap-5">
+            <div class="flex items-center justify-between">
+              <span class="text-[16px] font-bold text-ink">Corporate Treasury</span>
+              <span class="text-[11px] font-bold text-obsidian bg-vantage px-2.5 py-1 rounded-full">Empresas</span>
+            </div>
+            <div class="flex items-baseline gap-1.5 tabular-nums">
+              <span class="text-[40px] font-bold text-ink">A medida</span>
+              <span class="text-[13px] text-muted">· tesorerías &amp; fondos</span>
+            </div>
+            <div class="flex flex-col gap-3 text-[13px] text-ink/85 pt-4 border-t border-white/[0.08]">
+              <div class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-vantage shrink-0"></i><span>Todo lo incluido en Private Wealth</span></div>
+              <div class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-vantage shrink-0"></i><span>Aprobaciones multi-firma y roles por equipo</span></div>
+              <div class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-vantage shrink-0"></i><span>Tarjetas corporativas ilimitadas con límites dinámicos</span></div>
+              <div class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-vantage shrink-0"></i><span>Mesa FX dedicada y conciliación contable API</span></div>
+            </div>
+          </div>
+          <button data-plan="Corporate Treasury" class="plan-cta-btn tactile w-full py-3.5 rounded-full bg-vantage text-obsidian font-bold text-[13px] hover:bg-[#f7d83b]">
+            Hablar con un especialista
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- SECTION 5 (SCREENSHOT 5): BLOG / INSIGHTS 3-CARD EDITORIAL GRID           -->
+  <!-- ========================================================================= -->
+  <section id="blog" class="max-w-[1200px] mx-auto px-4 sm:px-5 lg:px-8 py-16 sm:py-24 lg:py-32 border-b border-white/[0.06]">
+    <div class="flex flex-col gap-3 sm:gap-4 mb-10 sm:mb-12">
+      <div class="flex items-center gap-2.5">
+        <span class="eyebrow-dot"></span>
+        <span class="text-[12px] font-bold uppercase tracking-[0.16em] text-muted">Blog</span>
+      </div>
+      <h2 class="split-heading text-[30px] sm:text-[48px] font-bold tracking-[-0.04em] leading-[1.08] sm:leading-[1.06] text-ink">
+        Mantente Al Día Con Nuestros Análisis
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-7">
+      <!-- Post 1 -->
+      <article data-blog-id="0" class="blog-card group cursor-pointer flex flex-col gap-4">
+        <div class="img-reveal-wrap hairline aspect-[16/10.5] bg-surface">
+          <img src="./assets/blog-1.jpg" alt="Cultura de seguridad financiera" class="w-full h-full object-cover" />
+        </div>
+        <div class="flex items-center gap-2 text-[12px]">
+          <span class="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-surface hairline text-ink/90 font-medium">
+            <span class="w-5 h-5 rounded-full bg-vantage/20 text-vantage text-[10px] font-bold flex items-center justify-center">SN</span>
+            <span>Sofía Navarro</span>
+          </span>
+          <span class="px-2.5 py-1 rounded-full bg-surface hairline text-muted tabular-nums">6 Min</span>
+        </div>
+        <h3 class="text-[19px] font-bold tracking-[-0.02em] leading-snug text-ink group-hover:text-vantage transition-colors">
+          Construyendo Una Cultura De Seguridad Que Tu Equipo Financiero Adopte
+        </h3>
+      </article>
+
+      <!-- Post 2 -->
+      <article data-blog-id="1" class="blog-card group cursor-pointer flex flex-col gap-4">
+        <div class="img-reveal-wrap hairline aspect-[16/10.5] bg-surface">
+          <img src="./assets/blog-2.jpg" alt="Pagos Zero-Trust" class="w-full h-full object-cover" />
+        </div>
+        <div class="flex items-center gap-2 text-[12px]">
+          <span class="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-surface hairline text-ink/90 font-medium">
+            <span class="w-5 h-5 rounded-full bg-emerald-500/20 text-gain text-[10px] font-bold flex items-center justify-center">AM</span>
+            <span>Arturo Méndez</span>
+          </span>
+          <span class="px-2.5 py-1 rounded-full bg-surface hairline text-muted tabular-nums">8 Min</span>
+        </div>
+        <h3 class="text-[19px] font-bold tracking-[-0.02em] leading-snug text-ink group-hover:text-vantage transition-colors">
+          Pagos Zero-Trust: Protegiendo Cada Transacción Institucional
+        </h3>
+      </article>
+
+      <!-- Post 3 -->
+      <article data-blog-id="2" class="blog-card group cursor-pointer flex flex-col gap-4">
+        <div class="img-reveal-wrap hairline aspect-[16/10.5] bg-surface">
+          <img src="./assets/blog-3.jpg" alt="Escalando infraestructura bancaria" class="w-full h-full object-cover object-top" />
+        </div>
+        <div class="flex items-center gap-2 text-[12px]">
+          <span class="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-surface hairline text-ink/90 font-medium">
+            <span class="w-5 h-5 rounded-full bg-amber-500/20 text-amber-300 text-[10px] font-bold flex items-center justify-center">EV</span>
+            <span>Elena Vargas</span>
+          </span>
+          <span class="px-2.5 py-1 rounded-full bg-surface hairline text-muted tabular-nums">5 Min</span>
+        </div>
+        <h3 class="text-[19px] font-bold tracking-[-0.02em] leading-snug text-ink group-hover:text-vantage transition-colors">
+          Cinco Señales De Que Tu Empresa Superó Su Banca Tradicional
+        </h3>
+      </article>
+    </div>
+
+    <div class="flex justify-center mt-12">
+      <button id="blog-view-all-btn" class="btn-glow px-7 py-3 rounded-xl text-[14px] font-bold">
+        <span>Ver todos</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- SECTION 6 (SCREENSHOT 6): FAQ WITH CATEGORY TABS + 3D COIN + SPLIT TILES  -->
+  <!-- ========================================================================= -->
+  <section id="faq" class="max-w-[1200px] mx-auto px-4 sm:px-5 lg:px-8 py-16 sm:py-24 lg:py-32">
+    <!-- Top Header + Category Filter Pills -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-5 sm:gap-6 mb-10 sm:mb-14">
+      <div class="flex flex-col gap-3">
+        <div class="flex items-center gap-2.5">
+          <span class="eyebrow-dot"></span>
+          <span class="text-[12px] font-bold uppercase tracking-[0.16em] text-muted">FAQ</span>
+        </div>
+        <h2 class="split-heading text-[30px] sm:text-[48px] font-bold tracking-[-0.04em] leading-[1.08] sm:leading-[1.06] text-ink">
+          ¿Preguntas? Estamos Aquí Para Ayudar.
+        </h2>
+      </div>
+
+      <!-- Category Tabs -->
+      <div class="flex flex-wrap items-center gap-2" role="tablist" aria-label="Categorías de preguntas frecuentes">
+        <button data-faq-cat="general" class="faq-cat-btn tactile px-3.5 sm:px-4 py-2 rounded-lg text-[12px] sm:text-[13px] font-bold bg-vantage text-obsidian shadow-[0_0_20px_-4px_rgba(242,206,22,0.5)]">
+          General
+        </button>
+        <button data-faq-cat="implementacion" class="faq-cat-btn tactile px-3.5 sm:px-4 py-2 rounded-lg text-[12px] sm:text-[13px] font-medium bg-surface hairline text-muted hover:text-ink">
+          Implementación
+        </button>
+        <button data-faq-cat="cumplimiento" class="faq-cat-btn tactile px-3.5 sm:px-4 py-2 rounded-lg text-[12px] sm:text-[13px] font-medium bg-surface hairline text-muted hover:text-ink">
+          Cumplimiento
+        </button>
+      </div>
+    </div>
+
+    <!-- 2-Column Body: 3D Gold Coin + Split-Tile Accordion -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+      <!-- Left 3D Visual -->
+      <div class="lg:col-span-5 flex items-center justify-center">
+        <div id="faq-coin-float" class="relative w-full max-w-[210px] sm:max-w-[300px] lg:max-w-[360px] aspect-square flex items-center justify-center">
+          <div class="absolute inset-8 sm:inset-10 rounded-full bg-vantage/10 blur-3xl pointer-events-none"></div>
+          <img
+            src="./assets/faq-3d-coin.jpg"
+            alt="Emblema 3D dorado de capital Vantage"
+            class="coin-blend w-full h-full object-contain select-none pointer-events-none"
+          />
+        </div>
+      </div>
+
+      <!-- Right Split-Tile FAQ List -->
+      <div id="faq-list-container" class="lg:col-span-7 flex flex-col gap-2.5 sm:gap-3">
+        <div class="faq-item flex items-stretch gap-2 sm:gap-2.5" data-open="true">
+          <div class="faq-card-main flex-1 bg-surface/90 hairline rounded-xl overflow-hidden">
+            <div class="w-full px-4 sm:px-5 py-4 sm:py-[18px] text-left flex items-center justify-between gap-3">
+              <span class="text-[14px] sm:text-[15px] font-medium text-ink leading-snug">¿Cuánto tiempo toma abrir una cuenta y comenzar a operar?</span>
+            </div>
+            <div class="faq-content">
+              <div class="overflow-hidden">
+                <p class="px-4 sm:px-5 pb-4 sm:pb-5 text-[13px] sm:text-[14px] text-muted leading-relaxed">El onboarding digital toma menos de 10 minutos. Para patrimonios privados y tesorerías corporativas, la verificación KYB/KYC se completa en menos de 48 horas con un especialista dedicado.</p>
+              </div>
+            </div>
+          </div>
+          <div class="faq-plus-box w-11 sm:w-14 shrink-0 bg-surface/90 hairline rounded-xl flex items-center justify-center text-ink">
+            <i data-lucide="plus" class="faq-plus w-4 h-4"></i>
+          </div>
+        </div>
+        <div class="faq-item flex items-stretch gap-2 sm:gap-2.5" data-open="false">
+          <div class="faq-card-main flex-1 bg-surface/90 hairline rounded-xl overflow-hidden">
+            <div class="w-full px-4 sm:px-5 py-4 sm:py-[18px] text-left flex items-center justify-between gap-3">
+              <span class="text-[14px] sm:text-[15px] font-medium text-ink leading-snug">¿Necesito conectar mi banco actual o ERP para usar Vantage Capital?</span>
+            </div>
+          </div>
+          <div class="faq-plus-box w-11 sm:w-14 shrink-0 bg-surface/90 hairline rounded-xl flex items-center justify-center text-ink">
+            <i data-lucide="plus" class="faq-plus w-4 h-4"></i>
+          </div>
+        </div>
+        <div class="faq-item flex items-stretch gap-2 sm:gap-2.5" data-open="false">
+          <div class="faq-card-main flex-1 bg-surface/90 hairline rounded-xl overflow-hidden">
+            <div class="w-full px-4 sm:px-5 py-4 sm:py-[18px] text-left flex items-center justify-between gap-3">
+              <span class="text-[14px] sm:text-[15px] font-medium text-ink leading-snug">¿Puedo cambiar de membresía o retirar mi liquidez en cualquier momento?</span>
+            </div>
+          </div>
+          <div class="faq-plus-box w-11 sm:w-14 shrink-0 bg-surface/90 hairline rounded-xl flex items-center justify-center text-ink">
+            <i data-lucide="plus" class="faq-plus w-4 h-4"></i>
+          </div>
+        </div>
+        <div class="faq-item flex items-stretch gap-2 sm:gap-2.5" data-open="false">
+          <div class="faq-card-main flex-1 bg-surface/90 hairline rounded-xl overflow-hidden">
+            <div class="w-full px-4 sm:px-5 py-4 sm:py-[18px] text-left flex items-center justify-between gap-3">
+              <span class="text-[14px] sm:text-[15px] font-medium text-ink leading-snug">¿Cómo protege Vantage Capital nuestros datos financieros y fondos?</span>
+            </div>
+          </div>
+          <div class="faq-plus-box w-11 sm:w-14 shrink-0 bg-surface/90 hairline rounded-xl flex items-center justify-center text-ink">
+            <i data-lucide="plus" class="faq-plus w-4 h-4"></i>
+          </div>
+        </div>
+        <div class="faq-item flex items-stretch gap-2 sm:gap-2.5" data-open="false">
+          <div class="faq-card-main flex-1 bg-surface/90 hairline rounded-xl overflow-hidden">
+            <div class="w-full px-4 sm:px-5 py-4 sm:py-[18px] text-left flex items-center justify-between gap-3">
+              <span class="text-[14px] sm:text-[15px] font-medium text-ink leading-snug">¿Soportan empresas y patrimonios que operan en múltiples divisas?</span>
+            </div>
+          </div>
+          <div class="faq-plus-box w-11 sm:w-14 shrink-0 bg-surface/90 hairline rounded-xl flex items-center justify-center text-ink">
+            <i data-lucide="plus" class="faq-plus w-4 h-4"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SIGNATURE VANTAGE GOLD CLOSING CTA BANNER -->
+  <section class="max-w-[1200px] mx-auto px-4 sm:px-5 lg:px-8 pb-16 sm:pb-20">
+    <div id="closing-cta-banner" class="bg-vantage text-obsidian rounded-3xl sm:rounded-[32px] p-6 sm:p-12 lg:p-16 flex flex-col lg:flex-row lg:items-end justify-between gap-7 sm:gap-8">
+      <div class="flex flex-col gap-3.5 sm:gap-4 max-w-xl">
+        <div class="inline-flex items-center gap-2 self-start px-3 py-1 rounded-full bg-obsidian/10 text-[11px] sm:text-[12px] font-bold">
+          <span>Disponible en iOS, Android y Web</span>
+        </div>
+        <h2 class="split-heading text-[30px] sm:text-[48px] font-bold tracking-[-0.035em] leading-[1.04] sm:leading-[1.02]">
+          Eleva la precisión de tu capital global.
+        </h2>
+        <p class="text-[14px] sm:text-[16px] text-obsidian/75 font-medium max-w-md">
+          Onboarding en menos de 48 horas para patrimonios privados, founders y tesorerías internacionales.
+        </p>
+      </div>
+
+      <div class="flex flex-col sm:flex-row gap-3 shrink-0 w-full lg:w-auto">
+        <button id="cta-demo-btn" class="tactile px-6 py-3.5 sm:py-4 rounded-full bg-obsidian/10 border border-obsidian/20 text-obsidian text-[14px] font-bold hover:bg-obsidian/15 flex items-center justify-center gap-2">
+          <i data-lucide="play" class="w-4 h-4 fill-obsidian"></i>
+          <span>Ver demo interactiva</span>
+        </button>
+        <button id="cta-access-btn" class="tactile px-7 py-3.5 sm:py-4 rounded-full bg-obsidian text-ink text-[14px] font-bold hover:bg-[#18181D] flex items-center justify-center gap-2">
+          <span>Solicitar invitación</span>
+          <i data-lucide="arrow-up-right" class="w-4 h-4 text-vantage"></i>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- SECTION 7 (SCREENSHOT 7): GIANT WORDMARK FOOTER + NEWSLETTER              -->
+  <!-- ========================================================================= -->
+  <footer id="footer" class="footer-horizon border-t border-white/[0.08] pt-16 pb-12">
+    <div class="max-w-[1200px] mx-auto px-5 lg:px-8 flex flex-col gap-14">
+
+      <!-- Upper Grid: 3 Link Columns + Newsletter Subscribe -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 pb-12 border-b border-white/[0.08]">
+        <div class="lg:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-8 lg:border-r lg:border-white/[0.08] lg:pr-8">
+          <div class="footer-col flex flex-col gap-3.5">
+            <h4 class="text-[14px] font-bold text-ink">Páginas principales</h4>
+            <ul class="flex flex-col gap-2.5 text-[13px] text-muted">
+              <li><a href="#top" class="hover:text-ink transition-colors">Inicio</a></li>
+              <li><a href="#plataforma" class="hover:text-ink transition-colors">Plataforma</a></li>
+              <li><a href="#sobre" class="hover:text-ink transition-colors">Nosotros</a></li>
+              <li><a href="#planes" class="hover:text-ink transition-colors">Membresías</a></li>
+              <li><a href="#blog" class="hover:text-ink transition-colors">Blog</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col flex flex-col gap-3.5">
+            <h4 class="text-[14px] font-bold text-ink">Ecosistema</h4>
+            <ul class="flex flex-col gap-2.5 text-[13px] text-muted">
+              <li><a href="#integraciones" class="hover:text-ink transition-colors">Integraciones</a></li>
+              <li><a href="#funciones" class="hover:text-ink transition-colors">Simulador APY</a></li>
+              <li><a href="#calculadora" class="hover:text-ink transition-colors">Calculadora FX</a></li>
+              <li><a href="#faq" class="hover:text-ink transition-colors">Preguntas Frecuentes</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col flex flex-col gap-3.5 col-span-2 sm:col-span-1">
+            <h4 class="text-[14px] font-bold text-ink">Recursos y Legal</h4>
+            <ul class="flex flex-col gap-2.5 text-[13px] text-muted">
+              <li><a href="#faq" class="hover:text-ink transition-colors">Seguridad &amp; Custodia</a></li>
+              <li><a href="#faq" class="hover:text-ink transition-colors">Licencias Tier-1</a></li>
+              <li><a href="#blog" class="hover:text-ink transition-colors">Estado del Sistema</a></li>
+              <li><a href="#faq" class="hover:text-ink transition-colors">Privacidad</a></li>
+              <li><a href="#faq" class="hover:text-ink transition-colors">Términos</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Newsletter Form -->
+        <div class="footer-col lg:col-span-5 flex flex-col justify-start gap-4 lg:pl-4">
+          <h4 class="text-[20px] font-bold tracking-tight text-ink">
+            Únete a nuestra lista para las últimas novedades
+          </h4>
+          <form id="newsletter-form" class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5">
+            <input
+              id="newsletter-email"
+              type="email"
+              required
+              placeholder="Ingresa tu correo electrónico"
+              class="flex-1 bg-white text-obsidian placeholder:text-zinc-500 rounded-xl px-4 py-3 text-[13px] font-medium focus:outline-none focus:ring-2 focus:ring-vantage"
+            />
+            <button type="submit" class="btn-glow px-6 py-3 rounded-xl text-[13px] font-bold shrink-0">
+              <span>Suscribirse</span>
+            </button>
+          </form>
+          <p class="text-[12px] text-faint">
+            Análisis macroeconómicos y lanzamientos de producto. Sin spam.
+          </p>
+        </div>
+      </div>
+
+      <!-- Lower Section: Brand + Socials/Contact Row + Balanced Copyright Bar -->
+      <div id="footer-bottom" class="flex flex-col gap-6">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+          <!-- Brand Signature -->
+          <div class="flex items-center gap-3">
+            <svg width="24" height="18" viewBox="0 0 221 167" fill="none" xmlns="http://www.w3.org/2000/svg" class="shrink-0">
+              <path d="M0 0L110.109 166.858L127.539 141.473L32.7384 0C32.7384 0 0 0.242599 0 0Z" fill="#F2CE16"/>
+              <path d="M110.109 101.493L127.545 76.2321L76.2324 0H43.2451L110.109 101.493Z" fill="#F2CE16"/>
+              <path d="M115.195 44.7073L131.611 69.3921L177.767 0.487793H145.029L115.195 44.7073Z" fill="#F2CE16"/>
+              <path d="M187.654 0L115.571 108.977L131.477 133.162L220.15 0H187.654Z" fill="#F2CE16"/>
+              <path d="M109.937 21.7641C116.101 21.7641 121.098 16.8921 121.098 10.8821C121.098 4.87207 116.101 0 109.937 0C103.773 0 98.7759 4.87207 98.7759 10.8821C98.7759 16.8921 103.773 21.7641 109.937 21.7641Z" fill="#F2CE16"/>
+            </svg>
+            <div class="flex flex-col">
+              <span class="text-[15px] font-bold tracking-tight text-ink">Vantage Capital</span>
+              <span class="text-[12px] text-muted">Banca privada y tesorería multi-divisa para patrimonios globales.</span>
+            </div>
+          </div>
+
+          <!-- Social Icons + Contact Button -->
+          <div class="flex flex-wrap items-center gap-2.5">
+            <a href="#footer" data-social="Facebook" aria-label="Facebook" class="social-tile tactile w-11 h-11 bg-surface/70 hairline hover:border-vantage/45 rounded-xl flex items-center justify-center text-ink/80 hover:text-vantage">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M14 13.5h2.5l1-4H14v-2c0-1.03 0-2 2-2h1.5V2.14c-.326-.043-1.557-.14-2.857-.14C11.928 2 10 3.657 10 6.7v2.8H7v4h3V22h4v-8.5z"/></svg>
+            </a>
+            <a href="#footer" data-social="X" aria-label="X" class="social-tile tactile w-11 h-11 bg-surface/70 hairline hover:border-vantage/45 rounded-xl flex items-center justify-center text-ink/80 hover:text-vantage">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="#footer" data-social="Instagram" aria-label="Instagram" class="social-tile tactile w-11 h-11 bg-surface/70 hairline hover:border-vantage/45 rounded-xl flex items-center justify-center text-ink/80 hover:text-vantage">
+              <i data-lucide="instagram" class="w-4 h-4"></i>
+            </a>
+            <a href="#footer" data-social="LinkedIn" aria-label="LinkedIn" class="social-tile tactile w-11 h-11 bg-surface/70 hairline hover:border-vantage/45 rounded-xl flex items-center justify-center text-ink/80 hover:text-vantage">
+              <i data-lucide="linkedin" class="w-4 h-4"></i>
+            </a>
+            <button id="footer-contact-btn" class="tactile h-11 px-5 rounded-xl bg-surface/70 hairline hover:border-vantage/45 text-[13px] font-bold text-ink">
+              Contáctanos
+            </button>
+          </div>
+        </div>
+
+        <!-- Final Balanced Copyright Bar -->
+        <div class="bg-surface/75 hairline rounded-xl px-4 sm:px-5 py-4 flex flex-col sm:flex-row items-center justify-between gap-2 text-center sm:text-left text-[12px] text-muted">
+          <span>© 2026 Vantage Capital. Todos los derechos reservados.</span>
+          <span class="text-ink/85 font-medium tracking-tight">Global Access. <span class="text-vantage">Local Intelligence.</span></span>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <script>
+    if (window.lucide) window.lucide.createIcons();
+  </script>
+</body>
+</html>
